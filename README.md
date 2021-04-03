@@ -41,13 +41,13 @@ Ruby 2.6.5
 - geocordr
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1pXVbyd6QcVaKp4XoDvkpNAsjVfA5fXpXMJciJfbT-Dw/edit#gid=0
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRbBIILpiMGeMWpnG1hybKDj-OUXW77MgVkbjW7AUFgcggerFc8IJoRTDj8CSyNY_rVL6C0NHrBZAH_/pubhtml
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/1vsdFjfKuB7qAYEi-AZuVPEjaczitnmd6hIS5_pNXRPE/edit#gid=577294010
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRyVB1q-gLX5VqAsvkTyIlDfHf_ASQLYvGlcXmKT1ygG6Cli_Ah0cYaPkTXMSunGasy8GKs6uTfgd-s/pubhtml
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1JkJMuEGTRqkWrxfYZ8OEbiAm1NtGcBY-r6nlYVvvWOw/edit#gid=0
+https://docs.google.com/spreadsheets/d/e/2PACX-1vSiAEYvwCvyFSKQwSwVdGTn46hL_qpbrZRSiLFbR8DFe9WMonynG6efvvQVvCdf6o9O8EtYn7ES83GU/pubhtml
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1MaR3YEqn4XywZJsVQ4QZIFkLdqDvBmaKh84iyn--NfU/edit#gid=0
+https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3mSc3BMG0wfXCNGYDrta0fXE92czUjlmIBmAKBs3tmvUrSsR-ylWiQjPY4kTv_1O3YF0jOg4Ffw5Q/pubhtml
