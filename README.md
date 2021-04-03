@@ -11,8 +11,8 @@ ITの力を使って、ユーザーと業界双方の利益を実現できるこ
 愛車のメンテンナスをもっと身近に。
 
 ## バージョン
-Rails 5.2.5
-Ruby 2.6.5
+- Rails 5.2.5
+- Ruby 2.6.5
 
 ## 機能一覧
 - [ ] ログイン機能
@@ -40,14 +40,22 @@ Ruby 2.6.5
 - ransack
 - geocordr
 
+## 技術要件
+就職Termから2つ以上の技術
+  - devise
+  - AWS
+
+カリキュラム外のライブラリから1つ以上の技術
+  - ransack
+
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/e/2PACX-1vRbBIILpiMGeMWpnG1hybKDj-OUXW77MgVkbjW7AUFgcggerFc8IJoRTDj8CSyNY_rVL6C0NHrBZAH_/pubhtml
+https://docs.google.com/spreadsheets/d/1pXVbyd6QcVaKp4XoDvkpNAsjVfA5fXpXMJciJfbT-Dw/edit?usp=sharing
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/e/2PACX-1vRyVB1q-gLX5VqAsvkTyIlDfHf_ASQLYvGlcXmKT1ygG6Cli_Ah0cYaPkTXMSunGasy8GKs6uTfgd-s/pubhtml
+https://docs.google.com/spreadsheets/d/1vsdFjfKuB7qAYEi-AZuVPEjaczitnmd6hIS5_pNXRPE/edit?usp=sharing
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/e/2PACX-1vSiAEYvwCvyFSKQwSwVdGTn46hL_qpbrZRSiLFbR8DFe9WMonynG6efvvQVvCdf6o9O8EtYn7ES83GU/pubhtml
+https://docs.google.com/spreadsheets/d/1JkJMuEGTRqkWrxfYZ8OEbiAm1NtGcBY-r6nlYVvvWOw/edit?usp=sharing
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3mSc3BMG0wfXCNGYDrta0fXE92czUjlmIBmAKBs3tmvUrSsR-ylWiQjPY4kTv_1O3YF0jOg4Ffw5Q/pubhtml
+https://docs.google.com/spreadsheets/d/1MaR3YEqn4XywZJsVQ4QZIFkLdqDvBmaKh84iyn--NfU/edit?usp=sharing
