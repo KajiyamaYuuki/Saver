@@ -5,8 +5,8 @@
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール画像 :
 <% if @user.image.present? %>
-  <p><%= image_tag(@user.image.url, :size => "200x200") %></p>
+  <p><%= image_tag @user.image.url, class: "icon_image" %></p>
 <% else %>
-  <p><%= image_tag("default_icon.png", :size => "200x200") %></p>
+  <p><%= image_tag "default_icon.png", class: "icon_image" %></p>
 <% end %>
 </p>
