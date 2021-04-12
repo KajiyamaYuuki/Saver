@@ -6,11 +6,16 @@ class ShopsController < ApplicationController
   end
 
   def new
-
+    @shop = Shop.new
   end
 
   def create
-
+    @shop = Shop.new(shop_params)
+    if @shop.save
+      redirect_to shop_path(@shop.id)
+    else
+      render :new
+    end
   end
 
   def show
@@ -19,13 +24,17 @@ class ShopsController < ApplicationController
   def edit
   end
 
-
   def update
-
+    if @shop.update(shop_params)
+      redirect_to shop_path(@shop.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @shop.destroy
+    redirect_to user_path(current_user.id)
   end
 
   private
