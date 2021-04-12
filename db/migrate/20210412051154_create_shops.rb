@@ -3,8 +3,11 @@ class CreateShops < ActiveRecord::Migration[5.2]
     create_table :shops do |t|
       t.string :name, null: false
       t.text :description
-      t.string :post_code
-      t.string :address
+      t.integer :post_code, null: false
+      t.integer :prefecture_code, null: false
+      t.string :address_city, null: false
+      t.string :address_street, null: false
+      t.string :address_building
       t.string :phone_number
       t.string :email
       t.string :url

@@ -39,8 +39,11 @@ ActiveRecord::Schema.define(version: 2021_04_12_051154) do
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.string "post_code"
-    t.string "address"
+    t.integer "post_code", null: false
+    t.integer "prefecture_code", null: false
+    t.string "address_city", null: false
+    t.string "address_street", null: false
+    t.string "address_building"
     t.string "phone_number"
     t.string "email"
     t.string "url"
