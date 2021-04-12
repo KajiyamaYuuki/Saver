@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_081720) do
+ActiveRecord::Schema.define(version: 2021_04_12_051154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 2021_04_10_081720) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "shops", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "post_code"
+    t.string "address"
+    t.string "phone_number"
+    t.string "email"
+    t.string "url"
+    t.string "image"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shops_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -59,4 +74,5 @@ ActiveRecord::Schema.define(version: 2021_04_10_081720) do
 
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "shops", "users"
 end
