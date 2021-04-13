@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: %i[ show edit update destroy ]
+  before_action :ensure_shop_owner, only: %i[ new create edit update destroy ]
 
   def index
     @shops = Shop.all
@@ -11,6 +12,7 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.user_id = current_user.id
     if @shop.save
       redirect_to shop_path(@shop.id)
     else
@@ -39,10 +41,18 @@ class ShopsController < ApplicationController
 
   private
   def shop_params
-    params.require(:shop).permit(:name, :description, :post_code, :prefecture_code, :address_city, :address_street, :address_building :phone_number, :email, :url, :image)
+    params.require(:shop).permit(:name, :description, :post_code, :prefecture_code, :address_city, :address_street, :address_building, :phone_number, :email, :url, :image)
   end
 
   def set_shop
     @shop = Shop.find(params[:id])
   end
+
+  def ensure_shop_owner
+    unless current_user.is_owner?
+      flash[:notice] = '権限がありません'
+      redirect_to shops_path
+    end
+  end
+
 end

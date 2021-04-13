@@ -1,14 +1,13 @@
 class Shop < ApplicationRecord
-  belongs_to :user, class_name: "user", foreign_key: "user_id"
+  belongs_to :user
+  include JpPrefecture
+  jp_prefecture :prefecture_code
 
-include JpPrefecture
-jp_prefecture :prefecture_code
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
 
-def prefecture_name
-  JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-end
-
-def prefecture_name=(prefecture_name)
-  self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
-end
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
 end
