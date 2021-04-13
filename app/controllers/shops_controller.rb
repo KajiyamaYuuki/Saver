@@ -11,8 +11,7 @@ class ShopsController < ApplicationController
   end
 
   def create
-    @shop = Shop.new(shop_params)
-    @shop.user_id = current_user.id
+    @shop = current_user.build_shop(shop_params)
     if @shop.save
       redirect_to shop_path(@shop.id)
     else

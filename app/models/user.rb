@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
   mount_uploader :image, ImageUploader
-  has_one :shop
+  has_one :shop, dependent: :destroy
 end
