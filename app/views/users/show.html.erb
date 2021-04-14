@@ -4,9 +4,17 @@
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール画像 :
-<% if @user.image.present? %>
-  <p><%= image_tag @user.image.url, class: "icon_image" %></p>
-<% else %>
-  <p><%= image_tag "default_icon.png", class: "icon_image" %></p>
-<% end %>
+  <% if @user.image.present? %>
+    <p><%= image_tag @user.image.url, class: "icon_image" %></p>
+  <% else %>
+    <p><%= image_tag "default_icon.png", class: "icon_image" %></p>
+  <% end %>
 </p>
+
+<% if @user.is_owner? %>
+  <% if @user.shop.present? %>
+    <%= link_to "店舗ページへ", shop_path(@user.shop.id) %>
+  <% else %>
+    <%= link_to "店舗登録", new_shop_path %>
+  <% end %>
+<% end %>
