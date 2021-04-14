@@ -1,0 +1,47 @@
+<h1>Menus#new</h1>
+<p>Find me in app/views/menus/new.html.erb</p>
+
+<%= form_with(model: @menu, local: true) do |form| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @menu.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @menu.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %><br />
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %><br />
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interval_min %><br />
+    <%= form.text_field :interval_min %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reservationable %><br />
+    <%= form.check_box :reservationable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %><br />
+    <%= form.file_field :image %>
+  </div>
+
+  <%= form.button :submit %>
+<% end %>

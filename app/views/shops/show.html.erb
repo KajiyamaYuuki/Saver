@@ -1,1 +1,20 @@
-<%= @shop.name %>
+<h2><%= @shop.name %></h2>
+
+<p><%= link_to "staff登録", new_staff_path %></p>
+<p><%= link_to "menu管理", new_menu_path %></p>
+
+<% @shop.staffs.each do |staff| %>
+  <li>
+    <%= staff.name %>
+  </li>
+    <p>整備士歴：<%= staff.work_history %>年</p>
+    <p><%= staff.description %></p>
+<% end %>
+
+<% @shop.menus.each do |menu| %>
+  <li>
+    <%= menu.title %>
+  </li>
+    <p>価格：<%= menu.price %>円</p>
+    <p>所要時間：<%= menu.interval_min %>分</p>
+<% end %>

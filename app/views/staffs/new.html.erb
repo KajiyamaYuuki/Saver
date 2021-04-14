@@ -1,0 +1,47 @@
+<h1>Staffs#new</h1>
+<p>Find me in app/views/staffs/new.html.erb</p>
+
+<%= form_with(model: @staff, local: true) do |form| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @staff.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @staff.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %><br />
+    <%= form.text_field :role %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sex %><br />
+    <%= form.text_field :sex %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_history %><br />
+    <%= form.text_field :work_history %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %><br />
+    <%= form.file_field :image %>
+  </div>
+
+  <%= form.button :submit %>
+<% end %>

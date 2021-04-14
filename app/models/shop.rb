@@ -1,4 +1,6 @@
 class Shop < ApplicationRecord
+  has_many :staffs, dependent: :destroy
+  has_many :menus, dependent: :destroy
   belongs_to :user
   include JpPrefecture
   jp_prefecture :prefecture_code
