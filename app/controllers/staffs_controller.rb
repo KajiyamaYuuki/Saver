@@ -10,9 +10,9 @@ class StaffsController < ApplicationController
   end
 
   def create
-    @staff = current_user.staffs.build(staff_params)
+    @staff = current_user.shop.staffs.build(staff_params)
     if @staff.save
-      redirect_to shop_path(@shop.id)
+      redirect_to shop_path(current_user.shop.id)
     else
       render :new
     end
