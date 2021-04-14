@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'menus/index'
+  get 'menus/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
