@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_04_14_031300) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.text "description"
     t.string "image"
     t.string "price", null: false
