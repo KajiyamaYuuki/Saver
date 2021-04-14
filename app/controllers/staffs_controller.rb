@@ -1,5 +1,6 @@
 class StaffsController < ApplicationController
   before_action :ensure_shop_owner, only: %i[ new create edit update destroy ]
+  before_action :set_staff, only: %i[ edit update destroy ]
 
   def index
     @staffs = Staff.all
@@ -23,7 +24,7 @@ class StaffsController < ApplicationController
 
   def update
     if @staff.update(staff_params)
-      redirect_to shop_path(@shop.id)
+      redirect_to shop_path(current_user.shop.id)
     else
       render :edit
     end
@@ -31,7 +32,7 @@ class StaffsController < ApplicationController
 
   def destroy
     @staff.destroy
-    redirect_to shop_path(@shop.id)
+    redirect_to shop_path(current_user.shop.id)
   end
 
   private

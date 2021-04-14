@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'menus/index'
-  get 'menus/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -13,5 +11,6 @@ Rails.application.routes.draw do
   end
   resources :shops
   resources :staffs
+  resources :menus
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
