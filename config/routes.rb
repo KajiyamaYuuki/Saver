@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  resources :shops
+  resources :shops do
+    resources :reviews
+  end
   resources :staffs
   resources :menus
   resources :reservations
