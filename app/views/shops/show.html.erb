@@ -1,16 +1,23 @@
-<h2><%= @shop.name %></h2>
-
-<p><%= link_to "staff登録", new_staff_path %></p>
-<p><%= link_to "menu管理", new_menu_path %></p>
-
-<% @shop.staffs.each do |staff| %>
-  <li>
-    <%= staff.name %>
-  </li>
-    <p>整備士歴：<%= staff.work_history %>年</p>
-    <p><%= staff.description %></p>
+<% if current_user.is_owner? %>
+  <%= link_to "staff登録", new_staff_path %>
+  <%= link_to "menu管理", new_menu_path %>
 <% end %>
 
+<h1><%= @shop.name %></h1>
+<p>〒<%= @shop.post_code %></p>
+<p><%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %></p>
+<p><%= @shop.phone_number %></p>
+<p><%= @shop.email %></p>
+<p><%= @shop.url %></p>
+
+<h2>スタッフ一覧</h2>
+<% @shop.staffs.each do |staff| %>
+  <%= staff.name %>
+  <p>整備士歴：<%= staff.work_history %>年</p>
+  <p><%= staff.description %></p>
+<% end %>
+
+<h2>メニュー一覧</h2>
 <% @shop.menus.each do |menu| %>
   <li>
     <%= menu.title %>
