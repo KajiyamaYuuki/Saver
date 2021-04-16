@@ -1,6 +1,6 @@
 <% if current_user.is_owner? %>
   <%= link_to "staff登録", new_staff_path %>
-  <%= link_to "menu管理", new_menu_path %>
+  <%= link_to "menu登録", new_menu_path %>
 <% end %>
 
 <h1><%= @shop.name %></h1>
@@ -19,9 +19,12 @@
 
 <h2>メニュー一覧</h2>
 <% @shop.menus.each do |menu| %>
-  <li>
-    <%= menu.title %>
-  </li>
-    <p>価格：<%= menu.price %>円</p>
-    <p>所要時間：<%= menu.interval_min %>分</p>
+  <%= menu.title %>
+  <p>価格：<%= menu.price %>円</p>
+  <p>所要時間：<%= menu.interval_min %>分</p>
+  <% if current_user.is_owner? %>
+    <%= link_to "メニュー編集", edit_menu_path(menu.id) %>
+  <% else %>
+    <%= link_to "予約する" %>
+  <% end %>
 <% end %>
