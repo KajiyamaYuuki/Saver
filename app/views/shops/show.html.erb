@@ -1,20 +1,35 @@
-<h2><%= @shop.name %></h2>
-
-<p><%= link_to "staff登録", new_staff_path %></p>
-<p><%= link_to "menu管理", new_menu_path %></p>
-
-<% @shop.staffs.each do |staff| %>
-  <li>
-    <%= staff.name %>
-  </li>
-    <p>整備士歴：<%= staff.work_history %>年</p>
-    <p><%= staff.description %></p>
+<% if current_user.is_owner? %>
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
+    <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
+  </div>
 <% end %>
 
+<h1><%= @shop.name %></h1>
+<p>〒<%= @shop.post_code %></p>
+<p><%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %></p>
+<p><%= @shop.phone_number %></p>
+<p><%= @shop.email %></p>
+<p><%= @shop.url %></p>
+
+<h2>スタッフ一覧</h2>
+<% @shop.staffs.each do |staff| %>
+  <%= staff.name %>
+  <p>整備士歴：<%= staff.work_history %>年</p>
+  <p><%= staff.description %></p>
+<% end %>
+
+<h2>メニュー一覧</h2>
 <% @shop.menus.each do |menu| %>
-  <li>
-    <%= menu.title %>
-  </li>
-    <p>価格：<%= menu.price %>円</p>
-    <p>所要時間：<%= menu.interval_min %>分</p>
+  <%= menu.title %>
+  <p>価格：<%= menu.price %>円</p>
+  <p>所要時間：<%= menu.interval_min %>分</p>
+  <% if current_user.is_owner? %>
+    <%= link_to "メニュー編集", edit_menu_path(menu.id) %>
+  <% else %>
+    <%= link_to "予約する" %>
+  <% end %>
 <% end %>
