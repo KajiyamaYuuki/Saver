@@ -1,6 +1,11 @@
 <% if current_user.is_owner? %>
-  <%= link_to "staff登録", new_staff_path %>
-  <%= link_to "menu登録", new_menu_path %>
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
+    <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
+  </div>
 <% end %>
 
 <h1><%= @shop.name %></h1>
