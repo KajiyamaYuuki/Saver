@@ -1,1 +1,20 @@
-<h1>index</h1>
+<% @shops.each do |shop| %>
+  <div class="card mb-6">
+    <header class="card-header">
+      <p class="card-header-title"><%= shop.name %></p>
+    </header>
+    <div class="card-body">
+      <div class="content">
+        <div class="content average-score">
+          <div class="star-rating mb-2">
+            <div class="star-rating-front" style="width: %">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+          </div>
+          <div class="average-score-display ml-3 pt-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="card-footer">
+  </footer>
+<% end %>
