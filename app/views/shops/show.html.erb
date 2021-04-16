@@ -33,7 +33,7 @@
       <% if current_user.is_owner? %>
         <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
       <% else %>
-        <%= link_to "予約する" %>
+        <%= link_to "予約する", new_reservation_path %>
       <% end %>
     </div>
   </div>
