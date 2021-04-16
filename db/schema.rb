@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_031300) do
+ActiveRecord::Schema.define(version: 2021_04_16_024412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 2021_04_14_031300) do
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "start_scheduled_at"
+    t.datetime "end_scheduled_at"
+    t.bigint "user_id"
+    t.bigint "menu_id"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_reservations_on_menu_id"
+    t.index ["shop_id"], name: "index_reservations_on_shop_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -104,6 +117,9 @@ ActiveRecord::Schema.define(version: 2021_04_14_031300) do
   add_foreign_key "menus", "shops"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "reservations", "menus"
+  add_foreign_key "reservations", "shops"
+  add_foreign_key "reservations", "users"
   add_foreign_key "shops", "users"
   add_foreign_key "staffs", "shops"
 end
