@@ -24,12 +24,17 @@
 
 <h2>メニュー一覧</h2>
 <% @shop.menus.each do |menu| %>
-  <%= menu.title %>
-  <p>価格：<%= menu.price %>円</p>
-  <p>所要時間：<%= menu.interval_min %>分</p>
-  <% if current_user.is_owner? %>
-    <%= link_to "メニュー編集", edit_menu_path(menu.id) %>
-  <% else %>
-    <%= link_to "予約する" %>
-  <% end %>
+  <div class="card">
+    <p class="card-header"><%= menu.title %></p>
+    <div class="card-body">
+      <p class="card-title">価格：<%= menu.price %>円</p>
+      <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
+      <p class="card-title"><%= menu.description %></p>
+      <% if current_user.is_owner? %>
+        <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "予約する" %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

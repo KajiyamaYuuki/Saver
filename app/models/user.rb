@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   mount_uploader :image, ImageUploader
   has_one :shop, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 end
