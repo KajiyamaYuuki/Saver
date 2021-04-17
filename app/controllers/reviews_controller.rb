@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   def index
     @shop = Shop.find(params[:shop_id])
     @reviews = @shop.reviews
+    @review = Review.new
   end
 
   def create
@@ -12,7 +13,7 @@ class ReviewsController < ApplicationController
       redirect_to shop_reviews_path(@review.shop)
     else
       flash[:error] = "Something went wrong"
-      @shop = Shop.find(params[:id])
+      @shop = Shop.find(params[:shop_id])
       render 'shops/show'
     end
   end

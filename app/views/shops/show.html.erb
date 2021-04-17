@@ -15,6 +15,16 @@
 <p><%= @shop.email %></p>
 <p><%= @shop.url %></p>
 
+<div class="card-content">
+  <div class="content average-score">
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+      </div>
+      <div class="average-score-display ml-3 pt-2"><%= @shop.average_score %>点</div>
+  </div>
+</div>
+
 <h2>スタッフ一覧</h2>
 <% @shop.staffs.each do |staff| %>
   <%= staff.name %>
@@ -38,5 +48,3 @@
     </div>
   </div>
 <% end %>
-
-<%= render 'reviews/form', review: @review, shop: @shop %>
