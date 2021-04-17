@@ -1,7 +1,6 @@
 class Shop < ApplicationRecord
   has_many :staffs, dependent: :destroy
   has_many :menus, dependent: :destroy
-  has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
   belongs_to :user
 
