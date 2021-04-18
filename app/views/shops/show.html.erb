@@ -3,6 +3,7 @@
     Dropdown link
   </a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <%= link_to "店舗情報編集", edit_shop_path(@shop.id), class: "dropdown-item" %>
     <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
     <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
   </div>
@@ -33,18 +34,22 @@
 <% end %>
 
 <h2>メニュー一覧</h2>
-<% @shop.menus.each do |menu| %>
-  <div class="card">
-    <p class="card-header"><%= menu.title %></p>
-    <div class="card-body">
-      <p class="card-title">価格：<%= menu.price %>円</p>
-      <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
-      <p class="card-title"><%= menu.description %></p>
-      <% if current_user.is_owner? %>
-        <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
-      <% end %>
+<div class="row">
+  <% @shop.menus.each do |menu| %>
+  <div class="col-md-4">
+    <div class="card">
+      <p class="card-header"><%= menu.title %></p>
+      <div class="card-body">
+        <p class="card-title">価格：<%= menu.price %>円</p>
+        <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
+        <p class="card-title"><%= menu.description %></p>
+        <% if current_user.is_owner? %>
+          <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
+        <% end %>
+      </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+</div>

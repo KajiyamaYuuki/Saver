@@ -1,0 +1,69 @@
+<%= form_with(model: @shop, local: true) do |form| %>
+  <% if @shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @shop.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @shop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_code %><br />
+    <%= form.text_field :post_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prefecture_code %><br />
+    <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_city %><br />
+    <%= form.text_field :address_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_street %><br />
+    <%= form.text_field :address_street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_building %><br />
+    <%= form.text_field :address_building %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %><br />
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %><br />
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %><br />
+    <%= form.file_field :image %>
+  </div>
+
+  <%= form.button :submit %>
+<% end %>
