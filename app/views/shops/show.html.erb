@@ -3,6 +3,7 @@
     Dropdown link
   </a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <%= link_to "店舗情報編集", edit_shop_path(@shop.id), class: "dropdown-item" %>
     <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
     <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
   </div>
@@ -15,6 +16,16 @@
 <p><%= @shop.email %></p>
 <p><%= @shop.url %></p>
 
+<div class="card-content">
+  <div class="content average-score">
+    <div class="star-rating">
+      <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+      </div>
+      <div class="average-score-display ml-3 pt-2"><%= @shop.average_score %>点</div>
+  </div>
+</div>
+
 <h2>スタッフ一覧</h2>
 <% @shop.staffs.each do |staff| %>
   <%= staff.name %>
@@ -23,13 +34,22 @@
 <% end %>
 
 <h2>メニュー一覧</h2>
-<% @shop.menus.each do |menu| %>
-  <%= menu.title %>
-  <p>価格：<%= menu.price %>円</p>
-  <p>所要時間：<%= menu.interval_min %>分</p>
-  <% if current_user.is_owner? %>
-    <%= link_to "メニュー編集", edit_menu_path(menu.id) %>
-  <% else %>
-    <%= link_to "予約する" %>
+<div class="row">
+  <% @shop.menus.each do |menu| %>
+  <div class="col-md-4">
+    <div class="card">
+      <p class="card-header"><%= menu.title %></p>
+      <div class="card-body">
+        <p class="card-title">価格：<%= menu.price %>円</p>
+        <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
+        <p class="card-title"><%= menu.description %></p>
+        <% if current_user.is_owner? %>
+          <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <% end %>
-<% end %>
+</div>

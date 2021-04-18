@@ -41,7 +41,7 @@ class MenusController < ApplicationController
   end
 
   def set_menu
-    @shop = Menu.find(params[:id])
+    @menu = Menu.find(params[:id])
   end
 
   def ensure_shop_owner

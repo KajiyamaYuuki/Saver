@@ -22,3 +22,32 @@
   border-radius: 150px;
   object-fit: cover;
 }
+
+.rating-box .ratings .fa {
+  color: #fc0;
+  cursor: pointer;
+}
+
+.main-rating {
+  display: flex;
+}
+
+.star-rating {
+  position: relative;
+}
+
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #fc3;
+}
+
+.star-rating-back {
+  color: #ccc;
+}
+
+.average-score {
+  display: flex;
+}
