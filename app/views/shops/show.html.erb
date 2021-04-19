@@ -9,9 +9,11 @@
   </div>
 <% end %>
 
-<h1><%= @shop.name %></h1>
-<p>〒<%= @shop.post_code %></p>
-<p><%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %></p>
+<h1 class="navbar"><%= @shop.name %></h1>
+<p>
+  <i class="fas fa-map-marker-alt"></i>
+  <%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %>
+</p>
 <p><%= @shop.phone_number %></p>
 <p><%= @shop.email %></p>
 <p><%= @shop.url %></p>
@@ -26,30 +28,52 @@
   </div>
 </div>
 
-<h2>スタッフ一覧</h2>
-<% @shop.staffs.each do |staff| %>
-  <%= staff.name %>
-  <p>整備士歴：<%= staff.work_history %>年</p>
-  <p><%= staff.description %></p>
-<% end %>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="true">menu</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="staff-tab" data-toggle="tab" href="#staff" role="tab" aria-controls="staff" aria-selected="false">staff</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">review</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="false">reservation</a>
+  </li>
+</ul>
 
-<h2>メニュー一覧</h2>
-<div class="row">
-  <% @shop.menus.each do |menu| %>
-  <div class="col-md-4">
-    <div class="card">
-      <p class="card-header"><%= menu.title %></p>
-      <div class="card-body">
-        <p class="card-title">価格：<%= menu.price %>円</p>
-        <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
-        <p class="card-title"><%= menu.description %></p>
-        <% if current_user.is_owner? %>
-          <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
-        <% end %>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+    <h2>メニュー一覧</h2>
+    <div class="row">
+      <% @shop.menus.each do |menu| %>
+      <div class="col-md-4">
+        <div class="card">
+          <p class="card-header"><%= menu.title %></p>
+          <div class="card-body">
+            <p class="card-title">価格：<%= menu.price %>円</p>
+            <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
+            <p class="card-title"><%= menu.description %></p>
+            <% if current_user.is_owner? %>
+              <%= link_to "メニュー編集", edit_menu_path(menu.id), class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
+            <% end %>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
-  <% end %>
+
+  <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="staff-tab">
+    <h2>スタッフ一覧</h2>
+    <% @shop.staffs.each do |staff| %>
+      <%= staff.name %>
+      <p>整備士歴：<%= staff.work_history %>年</p>
+      <p><%= staff.description %></p>
+    <% end %>
+  </div>
+
 </div>
