@@ -9,35 +9,44 @@
   </div>
 <% end %>
 
-<h1 class="navbar"><%= @shop.name %></h1>
-<p>
-  <i class="fas fa-map-marker-alt"></i>
-  <%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %>
-</p>
-<p><%= @shop.url %></p>
-
-<div class="card-content">
-  <div class="content average-score">
-    <div class="star-rating">
-      <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
-        <div class="star-rating-back">★★★★★</div>
-      </div>
-      <div class="average-score-display ml-3 pt-2"><%= @shop.average_score %>点</div>
+<h1 class="shop_title"><%= @shop.name %></h1>
+<div class="row shop_info">
+  <% if @shop.image.present? %>
+    <%= image_tag @shop.image.url, class:"shop_image col-md-3" %>
+  <% else %>
+    <%= image_tag "default_icon.png", class:"shop_image col-md-3" %>
+  <% end %>
+  <div class="col-md-5">
+    <p>
+    <i class="fas fa-map-marker-alt"></i>
+    <%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %>
+    </p>
+    <p><i class="fas fa-desktop"></i> <%= @shop.url %></p>
+    <p><%= @shop.description %></p>
   </div>
-  <%= link_to "レビューを見る", shop_reviews_path(@shop.id) %>
+  <div class="card-content col-md-4">
+    <div class="content average-score">
+      <div class="star-rating">
+        <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+        <div class="average-score-display ml-3"><%= @shop.average_score %>点</div>
+      </div>
+    </div>
+    <%= link_to "レビューを見る", shop_reviews_path(@shop.id) %>
+  </div>
 </div>
 
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
+<ul class="row nav nav-tabs" role="tablist">
+  <li class="nav-item col-md-3">
     <a class="nav-link active" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="true">menu</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item col-md-3">
     <a class="nav-link" id="staff-tab" data-toggle="tab" href="#staff" role="tab" aria-controls="staff" aria-selected="false">staff</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item col-md-3">
     <a class="nav-link" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="false">reservation</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item col-md-3">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="conract" aria-selected="false">contact</a>
   </li>
 </ul>
@@ -45,8 +54,7 @@
 <div class="tab-content">
   <div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
     <h2>メニュー一覧</h2>
-    <div class="row">
-      <% @shop.menus.each do |menu| %>
+    <% @shop.menus.each do |menu| %>
       <div class="col-md-4">
         <div class="card">
           <p class="card-header"><%= menu.title %></p>
@@ -62,8 +70,7 @@
           </div>
         </div>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 
   <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="staff-tab">
@@ -83,9 +90,9 @@
   </div>
 
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-    <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @shop.user_id), method: :post %>
-    <p><%= @shop.phone_number %></p>
-    <p><%= @shop.email %></p>
+    <h2>連絡先</h2>
+    <p><i class="fas fa-phone-alt"></i> <%= @shop.phone_number %></p>
+    <p><i class="fas fa-envelope"></i> <%= @shop.email %></p>
+    <i class="fas fa-paper-plane"></i> <%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @shop.user_id), method: :post %>
   </div>
-
 </div>
