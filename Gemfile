@@ -25,6 +25,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
+  gem 'gimei'
 end
 
 group :development do
@@ -51,4 +52,6 @@ gem 'cancancan'
 gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5.0'
-gem 'bulma-rails'
+gem 'ransack'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

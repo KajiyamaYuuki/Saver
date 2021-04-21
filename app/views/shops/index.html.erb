@@ -1,21 +1,34 @@
 <% @shops.each do |shop| %>
-  <header class="card-header">
-    <p class="card-header-title"><%= shop.name %></p>
-  </header>
-  <div class="card-content">
-    <div class="content average-score">
-      <div class="star-rating">
-        <div class="star-rating-front" style="width: <%= shop.review_score_percentage %>%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
+  <div class="card mb-3">
+    <div class="row">
+      <div class="col-md-2">
+        <% if shop.image.present? %>
+          <%= image_tag shop.image.url, class:"shop_image" %>
+        <% else %>
+          <%= image_tag "default_shop_icon.jpg", class:"shop_image" %>
+        <% end %>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h3 class="card-title"><%= shop.name %></h3>
+          <p class="card-text"><%= shop.description %></p>
+          <div class="card-content">
+            <div class="content average-score">
+              <div class="star-rating">
+                <div class="star-rating-front" style="width :<%= shop.review_score_percentage %>%">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+                <%= shop.average_score %>点（<%= shop.reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="average-score-display ml-3 pt-2">
-          <%= shop.average_score %>点（<%= shop.reviews.count %>件のレビュー）
+        <div class="card-footer">
+          <%= link_to "ショップ詳細へ", shop_path(shop.id), class: "btn col-md-5" %>
+          <%= link_to "レビューを見る", shop_reviews_path(shop), class: "btn col-md-5" %>
         </div>
       </div>
     </div>
   </div>
-  <footer class="card-footer">
-    <%= link_to "ショップ詳細へ", shop_path(shop.id), class: "btn" %>
-    <%= link_to "レビューを見る", shop_reviews_path(shop), class: "btn" %>
-  </footer>
 <% end %>

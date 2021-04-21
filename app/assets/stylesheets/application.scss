@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require fullcalendar
  */
 
 @import "bootstrap";
@@ -25,38 +26,22 @@
   height: 1000px;
 }
 
-.icon_image {
-  width: 300px;
-  height: 300px;
-  border-radius: 150px;
-  object-fit: cover;
-}
-
-.rating-box .ratings .fa {
-  color: #fc0;
-  cursor: pointer;
-}
-
-.main-rating {
-  display: flex;
-}
-
-.star-rating {
+html {
   position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
 }
 
-.star-rating-front {
+.footer {
   position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  color: #fc3;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
 }
 
-.star-rating-back {
-  color: #ccc;
-}
-
-.average-score {
-  display: flex;
+.container .text-muted {
+  text-align: center;
+  margin: 20px 0;
 }

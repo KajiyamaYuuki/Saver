@@ -1,0 +1,11 @@
+name,description,post_code,prefecture_code,address_city,address_street,address_builing,phone_number,email,url,user_id
+akiho_shop,akihoのお店です。,6413059,30,和歌山市,和歌山,,090-7572-7404,akiho_shop@email.com,https://akiho_shop.jp,11
+hirotada_shop,hirotadaのお店です。,4172455,22,富士市,富士,,080-2425-3152,hirotada_shop@email.com,https://hirotada_shop.jp,12
+noboru_shop,noboruのお店です。,5843650,27,富田林市,富田林,,090-7633-9622,noboru_shop@email.com,https://noboru_shop.jp,13
+makiko_shop,makikoのお店です。,1109966,13,台東区,台東,,080-3013-5369,makiko_shop@email.com,https://makiko_shop.jp,14
+kentaro_house,kentaroのお店です。,9247212,17,白山市,白山,,090-0511-3883,kentaro_house@email.com,https://kentaro_house.jp,15
+shinichi_house,shinichiのお店です。,3980724,20,大町市,大町,,080-0790-5867,shinichi_house@email.com,https://shinichi_house.jp,16
+masaya_house,masayaのお店です。,5612327,27,豊中市,豊中,,090-2263-7266,masaya_house@email.com,https://masaya_house.jp,17
+shigeyuki_house,shigeyukiのお店です。,6782606,28,赤穂市,赤穂,,080-2530-8378,shigeyuki_house@email.com,https://shigeyuki_house.jp,18
+riku_house,rikuのお店です。,7793798,36,吉野川市,吉野川,,090-4921-2608,riku_house@email.com,https://riku_house.jp,19
+hisanori_house,hisanoriのお店です。,2975466,12,茂原市,茂原,,080-1099-5891,hisanori_house@email.com,https://hisanori_house.jp,20
