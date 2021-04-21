@@ -24,10 +24,10 @@
                 Shop menu
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to "マイ店舗ページ", shop_path(current_user.shop.id) %>
-                <%= link_to "店舗情報編集", edit_shop_path(@shop.id), class: "dropdown-item" %>
-                <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
+                <%= link_to "マイ店舗ページ", shop_path(current_user.shop.id), class: "dropdown-item" %>
+                <%= link_to "店舗情報編集", edit_shop_path(current_user.shop.id), class: "dropdown-item" %>
                 <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
+                <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
               </div>
             <% else %>
               <%= link_to "店舗登録", new_shop_path unless current_user.shop.present? %>
