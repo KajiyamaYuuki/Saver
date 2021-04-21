@@ -10,11 +10,11 @@
 <% end %>
 
 <h1 class="shop_title"><%= @shop.name %></h1>
-<div class="row shop_info">
+<div class="row shop_info mb-5">
   <% if @shop.image.present? %>
     <%= image_tag @shop.image.url, class:"shop_image col-md-3" %>
   <% else %>
-    <%= image_tag "default_icon.png", class:"shop_image col-md-3" %>
+    <%= image_tag "default_shop_icon.jpg", class:"shop_image col-md-3" %>
   <% end %>
   <div class="col-md-5">
     <p>
@@ -29,10 +29,12 @@
       <div class="star-rating">
         <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
         <div class="star-rating-back">★★★★★</div>
-        <div class="average-score-display ml-3"><%= @shop.average_score %>点</div>
+        <div class="average-score-display">
+          <p><%= @shop.average_score %>点(<%= @shop.reviews.count %>件)</p>
+        </div>
+        <%= link_to "レビューを見る", shop_reviews_path(@shop.id) %>
       </div>
     </div>
-    <%= link_to "レビューを見る", shop_reviews_path(@shop.id) %>
   </div>
 </div>
 

@@ -1,11 +1,21 @@
 <img class="user_show_header" src="/assets/MyGarage.jpg">
 
+<p>
+  <% if @user.image.present? %>
+    <p><%= image_tag @user.image.url, class: "icon_image" %></p>
+  <% else %>
+    <p><%= image_tag "default_user_icon.png", class: "icon_image" %></p>
+  <% end %>
+</p>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+
 <ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">profile</a>
+    <a class="nav-link active" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="true">予約情報</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="false">予約情報</a>
+    <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message" aria-selected="false">メッセージ</a>
   </li>
   <% if @user.is_owner? %>
     <li class="nav-item">
@@ -15,25 +25,35 @@
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <p>名前 : <%= @user.name %></p>
-    <p>メールアドレス : <%= @user.email %></p>
-    <p>プロフィール画像 :
-      <% if @user.image.present? %>
-        <p><%= image_tag @user.image.url, class: "icon_image" %></p>
-      <% else %>
-        <p><%= image_tag "default_icon.png", class: "icon_image" %></p>
-      <% end %>
-    </p>
-  </div>
-
-  <div class="tab-pane fade" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
+  <div class="tab-pane fade show active" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
     <% @user.reservations.each do |reservation| %>
       <p><%= reservation.menu.shop.name %></p>
       <p><%= reservation.menu.title %></p>
       <p><%= reservation.start_scheduled_at %>~<%= reservation.end_scheduled_at %></p>
     <% end %>
     <div id="calendar"></div>
+  </div>
+
+  <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
+        <table class="table">
+          <thead>
+            <th scope="col">name</th>
+            <th scope="col">link</th>
+          </thead>
+            <% @rooms.each do |room| %>
+              <% if @user.is_owner? %>
+                <tbody>
+                  <td><%= room.sender.name %></td>
+                  <td><%= link_to '個別メッセージ', conversations_path(sender_id: room.sender_id, recipient_id: current_user.id), method: :post %></td>
+                </tbody>
+              <% else %>
+                <tbody>
+                  <td><%= room.recipient.shop.name %></td>
+                  <td><%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: room.recipient_id), method: :post %></td>
+                </tbody>
+              <% end %>
+            <% end %>
+        </table>
   </div>
 
   <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
