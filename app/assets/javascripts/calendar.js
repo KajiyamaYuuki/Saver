@@ -45,12 +45,10 @@ $(function () {
               dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
               //ボタンのレイアウト
               header: {
-                  left: '',
+                  left: 'month,agendaWeek,listMonth',
                   center: 'title',
                   right: 'today prev,next'
               },
-              //終了時刻がないイベントの表示間隔
-              defaultTimedEventDuration: '03:00:00',
               buttonText: {
                   prev: '前',
                   next: '次',
@@ -61,14 +59,14 @@ $(function () {
                   week: '週',
                   day: '日'
               },
-              // Drag & Drop & Resize
-              editable: true,
-              //イベントの時間表示を２４時間に
-              timeFormat: "HH:mm",
               //イベントの色を変える
               eventColor: '#87cefa',
               //イベントの文字色を変える
               eventTextColor: '#000000',
+              defaultView: 'month',
+              displayEventTime: true,
+              displayEventEnd: true,
+              timeFormat: "HH:mm"
           });
       }
   });
