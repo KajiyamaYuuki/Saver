@@ -81,9 +81,6 @@
   </div>
 
   <div class="tab-pane fade" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
-    <% @shop.menu_reservations.each do |reservation| %>
-      <p><%= reservation.start_scheduled_at %>~<%= reservation.end_scheduled_at %></p>
-    <% end %>
     <div id="calendar"></div>
   </div>
 

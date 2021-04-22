@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
 
   def index
-      @messages = @conversation.messages
+    @messages = @conversation.messages
     if @messages.length > 10
       @over_ten = true
       @messages = Message.where(id: @messages[-10..-1].pluck(:id))

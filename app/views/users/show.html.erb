@@ -62,9 +62,10 @@
 
   <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
     <% if @user.shop.present? %>
-      <%= link_to "店舗ページへ", shop_path(@user.shop.id) %>
-    <% else %>
-      <%= link_to "店舗登録", new_shop_path %>
+      <% @user.shop.menu_reservations.each do |reservation| %>
+        <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
+        <p><%= reservation.start_scheduled_at %>~<%= reservation.end_scheduled_at %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
