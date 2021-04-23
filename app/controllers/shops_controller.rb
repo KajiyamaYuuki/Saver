@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: %i[ show edit update destroy ]
   before_action :ensure_shop_owner, only: %i[ new create edit update destroy ]
+  before_action :ensure_my_shop_owner, only: %i[ edit update destroy ]
 
   def index
     @q = Shop.ransack(params[:q])
@@ -44,15 +45,20 @@ class ShopsController < ApplicationController
     params.require(:shop).permit(:name, :description, :post_code, :prefecture_code, :address_city, :address_street, :address_building, :phone_number, :email, :url, :image)
   end
 
-  def set_shop
-    @shop = Shop.find(params[:id])
-  end
-
-  def ensure_shop_owner
-    unless current_user.is_owner?
+  def ensure_my_shop_owner
+    if current_user.present?
+      unless current_user.id == @shop.user_id
+        flash[:notice] = '権限がありません'
+        redirect_to shops_path
+      end
+    else
       flash[:notice] = '権限がありません'
       redirect_to shops_path
     end
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:id])
   end
 
 end

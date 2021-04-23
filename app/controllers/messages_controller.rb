@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
   end
   before_action :talk_room, only: %i[ index ]
+  before_action :authenticate_user!, only: [:create]
 
 
   def index

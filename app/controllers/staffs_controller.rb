@@ -1,6 +1,7 @@
 class StaffsController < ApplicationController
   before_action :ensure_shop_owner, only: %i[ new create edit update destroy ]
   before_action :set_staff, only: %i[ edit update destroy ]
+  before_action :ensure_my_shop_owner, only: %i[ edit update destroy ]
 
   def index
     @staffs = Staff.all
@@ -40,15 +41,20 @@ class StaffsController < ApplicationController
     params.require(:staff).permit(:name, :description, :image, :role, :sex, :work_history)
   end
 
-  def set_staff
-    @shop = Staff.find(params[:id])
-  end
-
-  def ensure_shop_owner
-    unless current_user.is_owner?
+  def ensure_my_shop_owner
+    if current_user.present?
+      unless current_user.id == @staff.shop.user_id
+        flash[:notice] = '権限がありません'
+        redirect_to shops_path
+      end
+    else
       flash[:notice] = '権限がありません'
       redirect_to shops_path
     end
+  end
+
+  def set_staff
+    @staff = Staff.find(params[:id])
   end
 
 end
