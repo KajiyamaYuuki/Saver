@@ -9,7 +9,7 @@
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
-      <%= f.text_field :name, autofocus: true, :placeholder => "name", class: "input"%>
+      <%= f.text_field :name, autofocus: true, :placeholder => "name", class: "input", id: "devise-registrations-new-name"%>
     </p>
   </div>
 
@@ -19,7 +19,7 @@
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input", id: "devise-registrations-new-email" %>
     </p>
   </div>
 
@@ -32,7 +32,7 @@
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
-      <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input" %>
+      <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input", id: "devise-registrations-new-password" %>
     </p>
   </div>
 
@@ -42,12 +42,12 @@
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input", id: "devise-registrations-new-password_confirmation" %>
     </p>
   </div>
 
   <div class="actions">
-    <%= f.submit t('.sign_up') %>
+    <%= f.submit t('.sign_up'), id:"devise-registrations-new-sign_up" %>
   </div>
 <% end %>
 
