@@ -3,7 +3,8 @@ class ShopsController < ApplicationController
   before_action :ensure_shop_owner, only: %i[ new create edit update destroy ]
 
   def index
-    @shops = Shop.all
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true)
   end
 
   def new

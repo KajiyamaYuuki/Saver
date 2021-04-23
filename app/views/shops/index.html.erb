@@ -1,26 +1,33 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :prefecture_code %>
+  <%= f.collection_select :prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, include_blank: '指定なし' %>
+
+  <%= f.label :score %>
+  <%= f.number_field :reviews_score_gteq, min:1, max:5 %>点〜
+  <%= f.number_field :reviews_score_lteq, min:1, max:5 %>点
+
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+<% end %>
+
 <% @shops.each do |shop| %>
-  <div class="card mb-3">
-    <div class="row">
-      <div class="col-md-2">
+  <div class="card-container mb-3">
+    <div class="row no-gutters">
         <% if shop.image.present? %>
           <%= image_tag shop.image.url, class:"shop_image" %>
         <% else %>
           <%= image_tag "default_shop_icon.jpg", class:"shop_image" %>
         <% end %>
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
-          <h3 class="card-title"><%= shop.name %></h3>
-          <p class="card-text"><%= shop.description %></p>
-          <div class="card-content">
-            <div class="content average-score">
-              <div class="star-rating">
-                <div class="star-rating-front" style="width :<%= shop.review_score_percentage %>%">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
-              </div>
-              <div class="average-score-display ml-3 pt-2">
-                <%= shop.average_score %>点（<%= shop.reviews.count %>件のレビュー）
-              </div>
+      <div class="card-body">
+        <h3 class="card-title"><%= shop.name %></h3>
+        <p class="card-text"><%= shop.description %></p>
+        <div class="card-content">
+          <div class="content average-score">
+            <div class="star-rating">
+              <div class="star-rating-front" style="width :<%= shop.review_score_percentage %>%">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+            <div class="average-score-display ml-3 pt-2">
+              <%= shop.average_score %>点（<%= shop.reviews.count %>件のレビュー）
             </div>
           </div>
         </div>

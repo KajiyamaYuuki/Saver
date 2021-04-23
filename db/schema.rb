@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_075958) do
     t.text "description"
     t.string "image"
     t.string "price", null: false
-    t.integer "interval_min", null: false
+    t.float "interval_hour", null: false
     t.boolean "reservationable"
     t.bigint "shop_id"
     t.datetime "created_at", null: false

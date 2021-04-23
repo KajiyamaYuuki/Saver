@@ -33,3 +33,14 @@ CSV.foreach('db/shop.csv', headers: true) do |info|
     user_id: info['user_id']
   )
 end
+
+CSV.foreach('db/menu.csv', headers: true) do |info|
+  Menu.create(
+    title: info['title'],
+    description: info['description'],
+    price: info['price'],
+    interval_hour: info['interval_hour'],
+    reservationable: info['reservationable'],
+    shop_id: info['shop_id']
+  )
+end
