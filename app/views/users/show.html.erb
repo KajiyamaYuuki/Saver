@@ -11,6 +11,9 @@
   <div class="user_data col-md-6">
     <h3>名前 : <%= @user.name %></h3>
     <h3>メールアドレス : <%= @user.email %></h3>
+    <% if current_user.id == @user.id %>
+      <%= link_to "ユーザー情報編集", edit_user_registration_path %>
+    <% end %>
   </div>
 </div>
 

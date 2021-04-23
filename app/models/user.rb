@@ -8,7 +8,6 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: true
   before_validation { email.downcase! }
-  validates :password, presence: true, length: { minimum: 6 }
   mount_uploader :image, ImageUploader
   has_one :shop, dependent: :destroy
   has_many :reservations, dependent: :destroy
