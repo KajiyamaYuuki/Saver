@@ -1,3 +1,9 @@
+<h3><%= @menu.title %>の予約作成</h3>
+<h4><%= @menu.shop.name %></h4>
+<p>説明文：<%= @menu.description %></p>
+<p>参考価格：<%= @menu.price %>円</p>
+<p>参考所要時間：<%= number_with_precision(@menu.interval_hour,precision: 2, strip_insignificant_zeros: true) %>時間</p>
+
 <%= form_with(model: [@menu, @reservation], local: true) do |form| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">

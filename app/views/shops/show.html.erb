@@ -51,7 +51,7 @@
             <p class="card-header"><%= menu.title %></p>
             <div class="card-body">
               <p class="card-title">価格：<%= menu.price %>円</p>
-              <p class="card-title">所要時間：<%= menu.interval_min %>分</p>
+              <p class="card-title">所要時間：<%= number_with_precision(menu.interval_hour,precision: 2, strip_insignificant_zeros: true) %>時間</p>
               <p class="card-title"><%= menu.description %></p>
               <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
             </div>
