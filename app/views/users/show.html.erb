@@ -33,7 +33,7 @@
     <% @user.reservations.each do |reservation| %>
       <h4><%= reservation.menu.shop.name %></h4>
       <p>予約中のメニュー：<%= reservation.menu.title %></p>
-      <p>来店予定日時：<%= reservation.start_scheduled_at %>~</p>
+      <p>来店予定日時：<%= l reservation.start_scheduled_at %>~</p>
     <% end %>
     <div id="calendar"></div>
   </div>
@@ -64,7 +64,7 @@
     <% if @user.shop.present? %>
       <% @user.shop.menu_reservations.each do |reservation| %>
         <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
-        <p><%= reservation.start_scheduled_at %>~<%= reservation.end_scheduled_at %></p>
+        <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
       <% end %>
     <% end %>
   </div>
