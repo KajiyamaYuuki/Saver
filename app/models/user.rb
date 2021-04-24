@@ -15,7 +15,4 @@ class User < ApplicationRecord
   has_many :conversations
   has_many :messages
 
-  def rooms(user_id)
-    Conversation.where(sender_id: user_id)
-  end
 end

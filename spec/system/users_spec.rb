@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :system do
-  let(:user) { create(:user) }
-  let(:other_user) { create(:user) }
+  let(:user) { create :user }
 
   describe 'User CRUD' do
     describe 'ログイン前' do
@@ -62,7 +61,7 @@ RSpec.describe User, type: :system do
             end
           end
           context 'パスワードが6文字未満' do
-            it 'ユーザーの編集が成功' do
+            it 'ユーザーの編集が失敗' do
               visit edit_user_registration_path
               fill_in 'devise-registrations-edit-email', with: 'test@example.com'
               fill_in 'devise-registrations-edit-password', with: 'test'
