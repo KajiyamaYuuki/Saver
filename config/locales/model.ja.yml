@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      shop: ショップ
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+      shop:
+        name: 名前
+        post_code: 郵便番号
+        prefecture_code: 都道府県
+        address_city: 市区町村
+        address_street: 番地
+        address_building: 建物
+        phone_number: 電話番号
+        email: メールアドレス
+        url: ホームページ
+        description: 説明文

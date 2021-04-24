@@ -12,7 +12,5 @@ class User < ApplicationRecord
   has_one :shop, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :conversations
-  has_many :messages
 
 end

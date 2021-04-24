@@ -31,7 +31,7 @@
                 <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
               </div>
             <% else %>
-              <%= link_to "店舗登録", new_shop_path unless current_user.shop.present? %>
+              <%= link_to "店舗登録", new_shop_path %>
             <% end %>
           <% end %>
         <% else %>
