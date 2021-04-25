@@ -12,6 +12,16 @@
     </p>
     <p><i class="fas fa-desktop"></i> <%= @shop.url %></p>
     <p><%= @shop.description %></p>
+    <% if current_user.id == @shop.user.id %>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Shop menu
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to "店舗情報編集", edit_shop_path(current_user.shop.id), class: "dropdown-item" %>
+        <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
+        <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
+      </div>
+    <% end %>
   </div>
   <div class="card-content col-md-5">
     <div class="content average-score">
