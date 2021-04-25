@@ -25,7 +25,10 @@
 
   <div class="field">
     <%= form.label :sex %><br />
-    <%= form.text_field :sex %>
+    <%= form.label :man %>
+    <%= form.radio_button :sex, :man %>
+    <%= form.label :woman %>
+    <%= form.radio_button :sex, :woman %>
   </div>
 
   <div class="field">

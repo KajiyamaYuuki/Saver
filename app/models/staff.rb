@@ -1,8 +1,4 @@
 class Staff < ApplicationRecord
   belongs_to :shop
-  enum sex: {
-    選択なし: 0,
-    男性: 1,
-    女性: 2
-  }
+  enum sex: { man: 1, woman: 2 }
 end
