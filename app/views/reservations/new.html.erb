@@ -1,5 +1,5 @@
 <h3><%= @menu.title %>の予約作成</h3>
-<h4><%= @menu.shop.name %></h4>
+<h4>店舗名：<%= @menu.shop.name %></h4>
 <p>説明文：<%= @menu.description %></p>
 <p>参考価格：<%= @menu.price %>円</p>
 <p>参考所要時間：<%= number_with_precision(@menu.interval_hour,precision: 2, strip_insignificant_zeros: true) %>時間</p>
@@ -18,13 +18,13 @@
 
   <div class="field">
     <%= form.label :start_scheduled_at %><br />
-    <%= form.datetime_field :start_scheduled_at %>
+    <%= form.datetime_field :start_scheduled_at, id:"reservation-new-start_scheduled_at" %>
   </div>
 
   <div class="field">
     <%= form.label :end_scheduled_at %><br />
-    <%= form.datetime_field :end_scheduled_at %>
+    <%= form.datetime_field :end_scheduled_at, id:"reservation-new-end_scheduled_at" %>
   </div>
 
-  <%= form.button :submit %>
+  <%= form.button :submit, id:"reservation-new-submit" %>
 <% end %>

@@ -5,6 +5,10 @@ ja:
       shop: ショップ
       menu: メニュー
       staff: 従業員
+      reservation: 予約
+      review: 口コミ
+      conversation: 会話
+      message: メッセージ
     attributes:
       user:
         name: ユーザー名
@@ -41,3 +45,6 @@ ja:
         work_history: 職歴
         description: 説明文
         image: 写真
+      reservation:
+        start_scheduled_at: 予約開始時刻
+        end_scheduled_at: 予約終了時刻

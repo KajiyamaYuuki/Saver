@@ -63,7 +63,7 @@
               <p class="card-title">価格：<%= menu.price %>円</p>
               <p class="card-title">所要時間：<%= number_with_precision(menu.interval_hour,precision: 2, strip_insignificant_zeros: true) %>時間</p>
               <p class="card-title"><%= menu.description %></p>
-              <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
+              <%= link_to "予約する", new_menu_reservation_path(menu.id), id: "shop-show-reserve-menu" %>
               <% if current_user.id == menu.shop.user_id %>
                 <%= link_to "メニュー編集", edit_menu_path(menu.id), id: "shop-show-edit-menu" %>
               <% end %>
