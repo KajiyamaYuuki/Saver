@@ -27,7 +27,7 @@ RSpec.describe User, type: :system do
             fill_in 'devise-registrations-new-password_confirmation', with: 'password'
             click_button 'devise-registrations-new-sign_up'
             expect(current_path).to eq users_path
-            expect(page).to have_content 'Eメールを入力してください'
+            expect(page).to have_content 'メールアドレスを入力してください'
           end
         end
         context '登録済メールアドレス' do
@@ -39,7 +39,7 @@ RSpec.describe User, type: :system do
             fill_in 'devise-registrations-new-password_confirmation', with: 'password'
             click_button 'devise-registrations-new-sign_up'
             expect(current_path).to eq users_path
-            expect(page).to have_content 'Eメールはすでに存在します'
+            expect(page).to have_content 'メールアドレスはすでに存在します'
           end
         end
       end

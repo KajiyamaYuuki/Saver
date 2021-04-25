@@ -3,16 +3,17 @@ ja:
     models:
       user: ユーザー
       shop: ショップ
+      menu: メニュー
     attributes:
       user:
-        name: 名前
+        name: ユーザー名
         email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
       shop:
-        name: 名前
+        name: ショップ名
         post_code: 郵便番号
         prefecture_code: 都道府県
         address_city: 市区町村
@@ -23,3 +24,10 @@ ja:
         url: ホームページ
         description: 説明文
         image: 写真
+      menu:
+        title: メニュー名
+        description: 説明文
+        image: 画像
+        price: 価格
+        interval_hour: 所要時間
+        reservationable: 予約可否
