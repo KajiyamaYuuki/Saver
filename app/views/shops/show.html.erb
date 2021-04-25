@@ -88,7 +88,7 @@
             <p>整備士歴：<%= staff.work_history %>年</p>
             <p><%= staff.description %></p>
             <% if current_user.id == staff.shop.user_id %>
-              <%= link_to "スタッフ情報編集", edit_menu_path(staff.id) %>
+              <%= link_to "スタッフ情報編集", edit_staff_path(staff.id), id: "shop-show-edit-staff" %>
             <% end %>
           </div>
         </div>

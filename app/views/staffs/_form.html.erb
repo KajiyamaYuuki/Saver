@@ -1,0 +1,47 @@
+<%= form_with(model: @staff, local: true) do |form| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @staff.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @staff.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, id: "shop-staff-name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %><br />
+    <%= form.text_field :role, id: "shop-staff-role" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sex %><br />
+    <%= form.label :man %>
+    <%= form.radio_button :sex, :man, id: "shop-staff-sex-man" %>
+    <%= form.label :woman %>
+    <%= form.radio_button :sex, :woman, id: "shop-staff-sex-woman" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_history %><br />
+    <%= form.text_field :work_history, id: "shop-staff-work_history" %>年
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description, id: "shop-staff-description" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %><br />
+    <%= form.file_field :image, id: "shop-staff-image" %>
+  </div>
+
+  <%= form.button :submit, id: "shop-staff-submit" %>
+<% end %>

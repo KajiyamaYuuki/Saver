@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       shop: ショップ
       menu: メニュー
+      staff: 従業員
     attributes:
       user:
         name: ユーザー名
@@ -31,3 +32,12 @@ ja:
         price: 価格
         interval_hour: 所要時間
         reservationable: 予約可否
+      staff:
+        name: 名前
+        role: 役職
+        sex: 性別
+        man: 男性
+        woman: 女性
+        work_history: 職歴
+        description: 説明文
+        image: 写真
