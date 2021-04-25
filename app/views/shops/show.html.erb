@@ -65,7 +65,7 @@
               <p class="card-title"><%= menu.description %></p>
               <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
               <% if current_user.id == menu.shop.user_id %>
-                <%= link_to "メニュー編集", edit_menu_path(menu.id) %>
+                <%= link_to "メニュー編集", edit_menu_path(menu.id), id: "shop-show-edit-menu" %>
               <% end %>
             </div>
           </div>
