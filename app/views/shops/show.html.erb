@@ -104,6 +104,6 @@
     <h2>連絡先</h2>
     <p><i class="fas fa-phone-alt"></i> <%= @shop.phone_number %></p>
     <p><i class="fas fa-envelope"></i> <%= @shop.email %></p>
-    <%= link_to ' 個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @shop.user_id), method: :post, class: "fas fa-paper-plane" if current_user.present? %>
+    <%= link_to ' 個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @shop.user_id), method: :post, class: "fas fa-paper-plane", id: "shop-show-start-message" if current_user.present? %>
   </div>
 </div>

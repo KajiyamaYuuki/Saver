@@ -51,3 +51,8 @@ ja:
       review:
         content: 内容
         score: 評価点
+      conversation:
+        sender: 送信者
+        recipient: 受信者
+      message:
+        body: 内容
