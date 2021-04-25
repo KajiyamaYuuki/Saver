@@ -32,7 +32,7 @@
           <p><%= @shop.average_score %>点(<%= @shop.reviews.count %>件)</p>
         </div>
       </div>
-      <p><%= link_to "レビューを見る", shop_reviews_path(@shop.id) %></p>
+      <p><%= link_to "レビューを見る", shop_reviews_path(@shop.id), id: "shops-show-reviews" %></p>
     </div>
   </div>
 </div>
