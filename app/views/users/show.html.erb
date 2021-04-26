@@ -75,7 +75,7 @@
         <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
       <% end %>
     <% else %>
-      <%= link_to "店舗登録", new_shop_path %>
+      <%= link_to "店舗登録", new_shop_path, class: "btn btn-outline-info" %>
     <% end %>
   </div>
 </div>
