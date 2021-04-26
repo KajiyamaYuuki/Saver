@@ -63,9 +63,10 @@
               <p class="card-title">価格：<%= menu.price %>円</p>
               <p class="card-title">所要時間：<%= number_with_precision(menu.interval_hour,precision: 2, strip_insignificant_zeros: true) %>時間</p>
               <p class="card-title"><%= menu.description %></p>
-              <%= link_to "予約する", new_menu_reservation_path(menu.id), id: "shop-show-reserve-menu" %>
+              <%= link_to "予約する", new_menu_reservation_path(menu.id), id: "shop-show-reserve-menu", class: "btn btn-outline-primary" %>
               <% if current_user.id == menu.shop.user_id %>
-                <%= link_to "メニュー編集", edit_menu_path(menu.id), id: "shop-show-edit-menu" %>
+                <%= link_to "メニュー編集", edit_menu_path(menu.id), id: "shop-show-edit-menu", class: "btn btn-outline-success" %>
+                <%= link_to '削除', menu, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
               <% end %>
             </div>
           </div>
@@ -88,7 +89,8 @@
             <p>整備士歴：<%= staff.work_history %>年</p>
             <p><%= staff.description %></p>
             <% if current_user.id == staff.shop.user_id %>
-              <%= link_to "スタッフ情報編集", edit_staff_path(staff.id), id: "shop-show-edit-staff" %>
+              <%= link_to "スタッフ編集", edit_staff_path(staff.id), id: "shop-show-edit-staff", class:"btn btn-outline-success" %>
+              <%= link_to '削除', staff, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
             <% end %>
           </div>
         </div>

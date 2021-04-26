@@ -34,7 +34,7 @@
 <div class="tab-content">
   <div class="tab-pane fade show active" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
     <% @user.reservations.each do |reservation| %>
-      <h4><%= reservation.menu.shop.name %></h4>
+      <h4><%= link_to reservation.menu.shop.name, shop_path(reservation.menu.shop.id) %></h4>
       <p>予約中のメニュー：<%= reservation.menu.title %></p>
       <p>来店予定日時：<%= l reservation.start_scheduled_at %>~</p>
     <% end %>
@@ -65,7 +65,7 @@
 
   <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
     <% if @user.shop.present? %>
-      <%= link_to "ショップページへ", shop_path(@user.shop.id) %>
+      <%= link_to "ショップページへ", shop_path(@user.shop.id), class: "btn btn-outline-info" %>
       <% @user.shop.menu_reservations.each do |reservation| %>
         <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
         <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>

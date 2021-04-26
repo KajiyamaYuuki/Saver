@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -11,4 +9,5 @@ class UsersController < ApplicationController
       @rooms = Conversation.where(sender_id: @user.id)
     end
   end
+
 end

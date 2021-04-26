@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  resources :users, only: [:index, :show]
-  get 'home/index'
+  resources :users, only: [:show]
   root 'shops#index'
   resources :conversations do
     resources :messages
