@@ -23,10 +23,10 @@
 </div>
 <%= form_with(model: [@conversation, @message]) do |f| %>
   <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
+    <%= f.text_area :body, class: "form-control", id: "message-index-body" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div>
-    <%= f.submit "メッセージを送る" %>
+    <%= f.submit "メッセージを送る", id: "message-index-submit" %>
   </div>
 <% end %>

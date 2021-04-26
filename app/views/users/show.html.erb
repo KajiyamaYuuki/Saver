@@ -11,6 +11,9 @@
   <div class="user_data col-md-6">
     <h3>名前 : <%= @user.name %></h3>
     <h3>メールアドレス : <%= @user.email %></h3>
+    <% if current_user.id == @user.id %>
+      <%= link_to "ユーザー情報編集", edit_user_registration_path %>
+    <% end %>
   </div>
 </div>
 
@@ -30,8 +33,8 @@
 
 <div class="tab-content">
   <div class="tab-pane fade show active" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
-    <% @user.reservations.each do |reservation| %>
-      <h4><%= reservation.menu.shop.name %></h4>
+    <% @user_reservations.each do |reservation| %>
+      <h4><%= link_to reservation.menu.shop.name, shop_path(reservation.menu.shop.id) %></h4>
       <p>予約中のメニュー：<%= reservation.menu.title %></p>
       <p>来店予定日時：<%= l reservation.start_scheduled_at %>~</p>
     <% end %>
@@ -52,7 +55,11 @@
             </tbody>
           <% else %>
             <tbody>
-              <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id)%></td>
+              <% if room.recipient.shop.present? %>
+                <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id) %></td>
+              <% else %>
+                <td><%= link_to room.recipient.name, shop_path(room.recipient.id) %></td>
+              <% end %>
               <td><%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: room.recipient_id), method: :post %></td>
             </tbody>
           <% end %>
@@ -62,10 +69,13 @@
 
   <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
     <% if @user.shop.present? %>
-      <% @user.shop.menu_reservations.each do |reservation| %>
+      <%= link_to "ショップページへ", shop_path(@user.shop.id), class: "btn btn-outline-info" %>
+      <% @shop_reservations.each do |reservation| %>
         <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
         <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
       <% end %>
+    <% else %>
+      <%= link_to "店舗登録", new_shop_path, class: "btn btn-outline-info" %>
     <% end %>
   </div>
 </div>

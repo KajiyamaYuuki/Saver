@@ -12,58 +12,58 @@
 
   <div class="field">
     <%= form.label :name %><br />
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "shop-name" %>
   </div>
 
   <div class="field">
     <%= form.label :post_code %><br />
-    <%= form.text_field :post_code %>
+    <%= form.text_field :post_code, class: "shop-post_code" %>
   </div>
 
   <div class="field">
     <%= form.label :prefecture_code %><br />
-    <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+    <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', class: "shop-prefecture_code" %>
   </div>
 
   <div class="field">
     <%= form.label :address_city %><br />
-    <%= form.text_field :address_city %>
+    <%= form.text_field :address_city, class: "shop-address_city" %>
   </div>
 
   <div class="field">
     <%= form.label :address_street %><br />
-    <%= form.text_field :address_street %>
+    <%= form.text_field :address_street, class: "shop-address_street" %>
   </div>
 
   <div class="field">
     <%= form.label :address_building %><br />
-    <%= form.text_field :address_building %>
+    <%= form.text_field :address_building, class: "shop-address_building" %>
   </div>
 
   <div class="field">
     <%= form.label :phone_number %><br />
-    <%= form.text_field :phone_number %>
+    <%= form.text_field :phone_number, class: "shop-phone_number" %>
   </div>
 
   <div class="field">
     <%= form.label :email %><br />
-    <%= form.email_field :email %>
+    <%= form.email_field :email, class: "shop-email" %>
   </div>
 
   <div class="field">
     <%= form.label :url %><br />
-    <%= form.text_field :url %>
+    <%= form.text_field :url, class: "shop-url" %>
   </div>
 
   <div class="field">
     <%= form.label :description %><br />
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "shop-description" %>
   </div>
 
   <div class="field">
     <%= form.label :image %><br />
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class: "shop-image" %>
   </div>
 
-  <%= form.button :submit %>
+  <%= form.button :submit, id: "shop-submit" %>
 <% end %>

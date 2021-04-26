@@ -12,33 +12,33 @@
 
   <div class="field">
     <%= form.label :title %><br />
-    <%= form.text_field :title %>
+    <%= form.text_field :title, id: "shop-menu-title" %>
   </div>
 
   <div class="field">
     <%= form.label :price %><br />
-    <%= form.text_field :price %>円
+    <%= form.text_field :price, id: "shop-menu-price" %>円
   </div>
 
   <div class="field">
     <%= form.label :interval_hour %><br />
-    <%= form.text_field :interval_hour %>時間
+    <%= form.text_field :interval_hour, id: "shop-menu-interval_hour" %>時間
   </div>
 
   <div class="field">
     <%= form.label :reservationable %><br />
-    <%= form.check_box :reservationable %>
+    <%= form.check_box :reservationable, id: "shop-menu-reservationable" %>
   </div>
 
   <div class="field">
     <%= form.label :description %><br />
-    <%= form.text_area :description %>
+    <%= form.text_area :description, id: "shop-menu-description" %>
   </div>
 
   <div class="field">
     <%= form.label :image %><br />
-    <%= form.file_field :image %>
+    <%= form.file_field :image, id: "shop-menu-image" %>
   </div>
 
-  <%= form.button :submit %>
+  <%= form.button :submit, id: "shop-menu-submit" %>
 <% end %>

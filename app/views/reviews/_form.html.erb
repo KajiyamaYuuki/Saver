@@ -1,7 +1,7 @@
 <div class="rating-box mt-3">
   <%= form_with model: review, url: shop_reviews_path(shop), local: true do |f| %>
     <div class="main-rating">
-      <div class="ratings mb-3">
+      <div class="ratings mb-3" id="reviews--form__ratings">
         <span class="fa fa-star-o" id="star"></span>
         <span class="fa fa-star-o" id="star"></span>
         <span class="fa fa-star-o" id="star"></span>
@@ -12,7 +12,7 @@
     </div>
     <%= f.hidden_field :shop_id, value: shop.id %>
     <%= f.hidden_field :score, id: "rating-value" %>
-    <%= f.text_area :content %>
-    <%= f.submit "保存", class: "button mt-3" %>
+    <%= f.text_area :content, id: "reviews-new-content" %>
+    <%= f.submit "保存", class: "button mt-3", id: "review-new-submit" %>
   <% end %>
 </div>

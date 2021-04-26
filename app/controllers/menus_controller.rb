@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
   before_action :ensure_shop_owner, only: %i[ new create edit update destroy ]
   before_action :set_menu, only: %i[ edit update destroy ]
+  before_action :ensure_my_shop_owner, only: %i[ edit update destroy ]
 
   def index
     @menus = Menu.all
@@ -40,15 +41,20 @@ class MenusController < ApplicationController
     params.require(:menu).permit(:title, :description, :image, :price, :interval_hour, :reservationable)
   end
 
-  def set_menu
-    @menu = Menu.find(params[:id])
-  end
-
-  def ensure_shop_owner
-    unless current_user.is_owner?
+  def ensure_my_shop_owner
+    if current_user.present?
+      unless current_user.id == @menu.shop.user_id
+        flash[:notice] = '権限がありません'
+        redirect_to shops_path
+      end
+    else
       flash[:notice] = '権限がありません'
       redirect_to shops_path
     end
+  end
+
+  def set_menu
+    @menu = Menu.find(params[:id])
   end
 
 end

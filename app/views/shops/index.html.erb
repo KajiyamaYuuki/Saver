@@ -19,6 +19,7 @@
         <% end %>
       <div class="card-body">
         <h3 class="card-title"><%= shop.name %></h3>
+        <p class="card-text address"><%= shop.prefecture.name %><%= shop.address_city %><%= shop.address_street %><%= shop.address_building %></p>
         <p class="card-text"><%= shop.description %></p>
         <div class="card-content">
           <div class="content average-score">

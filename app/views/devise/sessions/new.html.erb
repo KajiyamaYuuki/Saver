@@ -9,7 +9,7 @@
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input", id: "devise-sessions-new-email" %>
       </p>
     </div>
 
@@ -19,7 +19,7 @@
         <span class="icon is-small is-left">
           <i class="fas fa-lock"></i>
         </span>
-        <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input" %>
+        <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input", id: "devise-sessions-new-password" %>
       </p>
     </div>
 
@@ -31,7 +31,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit t('.sign_in') %>
+      <%= f.submit t('.sign_in'), id: "devise-sessions-new-log_in" %>
     </div>
   <% end %>
 

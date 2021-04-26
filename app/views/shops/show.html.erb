@@ -12,6 +12,16 @@
     </p>
     <p><i class="fas fa-desktop"></i> <%= @shop.url %></p>
     <p><%= @shop.description %></p>
+    <% if current_user == @shop.user %>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Shop menu
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to "店舗情報編集", edit_shop_path(current_user.shop.id), class: "dropdown-item" %>
+        <%= link_to "menu登録", new_menu_path, class: "dropdown-item" %>
+        <%= link_to "staff登録", new_staff_path, class: "dropdown-item" %>
+      </div>
+    <% end %>
   </div>
   <div class="card-content col-md-5">
     <div class="content average-score">
@@ -22,7 +32,7 @@
           <p><%= @shop.average_score %>点(<%= @shop.reviews.count %>件)</p>
         </div>
       </div>
-      <p><%= link_to "レビューを見る", shop_reviews_path(@shop.id) %></p>
+      <p><%= link_to "レビューを見る", shop_reviews_path(@shop.id), id: "shops-show-reviews" %></p>
     </div>
   </div>
 </div>
@@ -53,7 +63,11 @@
               <p class="card-title">価格：<%= menu.price %>円</p>
               <p class="card-title">所要時間：<%= number_with_precision(menu.interval_hour,precision: 2, strip_insignificant_zeros: true) %>時間</p>
               <p class="card-title"><%= menu.description %></p>
-              <%= link_to "予約する", new_menu_reservation_path(menu.id) %>
+              <%= link_to "予約する", new_menu_reservation_path(menu.id), id: "shop-show-reserve-menu", class: "btn btn-outline-primary" %>
+              <% if current_user == menu.shop.user %>
+                <%= link_to "メニュー編集", edit_menu_path(menu.id), id: "shop-show-edit-menu", class: "btn btn-outline-success" %>
+                <%= link_to '削除', menu, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -74,6 +88,10 @@
             <h2><%= staff.name %></h2>
             <p>整備士歴：<%= staff.work_history %>年</p>
             <p><%= staff.description %></p>
+            <% if current_user == staff.shop.user %>
+              <%= link_to "スタッフ編集", edit_staff_path(staff.id), id: "shop-show-edit-staff", class:"btn btn-outline-success" %>
+              <%= link_to '削除', staff, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -88,6 +106,6 @@
     <h2>連絡先</h2>
     <p><i class="fas fa-phone-alt"></i> <%= @shop.phone_number %></p>
     <p><i class="fas fa-envelope"></i> <%= @shop.email %></p>
-    <%= link_to ' 個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @shop.user_id), method: :post, class: "fas fa-paper-plane" if current_user.present? %>
+    <%= link_to ' 個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @shop.user_id), method: :post, class: "fas fa-paper-plane", id: "shop-show-start-message" if current_user.present? %>
   </div>
 </div>
