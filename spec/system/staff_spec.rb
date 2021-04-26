@@ -80,18 +80,15 @@ RSpec.describe Staff, type: :system do
           it 'staffの削除が成功' do
             visit shop_path(owner.shop.id)
             click_link 'staff-tab'
-            click_link 'shop-show-edit-staff'
-            fill_in 'shop-staff-name', with: 'kajiyama'
-            fill_in 'shop-staff-role', with: 'オーナー'
-            choose 'shop-staff-sex-man'
-            fill_in 'shop-staff-work_history', with: '0.5'
-            fill_in 'shop-staff-description', with: 'kajiyamaの紹介文'
-            click_button 'shop-staff-submit'
+            page.accept_confirm do
+              click_link 'shop-show-destroy-staff'
+            end
             expect(current_path).to eq shop_path(owner.shop.id)
             click_link 'staff-tab'
-            expect(page).to have_content 'kajiyama'
+            expect(page).not_to have_content 'staff3'
           end
         end
+      end
     end
   end
 end

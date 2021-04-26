@@ -66,7 +66,7 @@
               <%= link_to "予約する", new_menu_reservation_path(menu.id), id: "shop-show-reserve-menu", class: "btn btn-outline-primary" %>
               <% if current_user == menu.shop.user %>
                 <%= link_to "メニュー編集", edit_menu_path(menu.id), id: "shop-show-edit-menu", class: "btn btn-outline-success" %>
-                <%= link_to '削除', menu, method: :delete, class: "btn btn-outline-danger", data: { confirm: '本当によろしいですか？' } %>
+                <%= link_to '削除', menu, method: :delete, class: "btn btn-outline-danger", data: { confirm: '本当によろしいですか？' }, id: "shop-show-destroy-menu" %>
               <% end %>
             </div>
           </div>
