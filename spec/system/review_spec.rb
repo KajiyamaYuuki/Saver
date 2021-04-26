@@ -13,7 +13,7 @@ RSpec.describe Review, type: :system do
         it 'レビュー投稿が成功', js: true do
           visit shop_path(owner.shop.id)
           click_link "shops-show-reviews"
-          find('#rating-value', visible: false).set('5')
+          first('#reviews--form__ratings span:nth-child(3)').click
           fill_in "reviews-new-content", with: "最高！！"
           click_button "review-new-submit"
           expect(page).to have_content 'レビューを投稿しました'

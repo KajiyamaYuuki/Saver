@@ -4,4 +4,5 @@
   <p><%= reservation.menu.title %></p>
   <p><%= reservation.user.name %>様</p>
   <p><%= reservation.start_scheduled_at %>~<%= reservation.end_scheduled_at %></p>
+  <%= link_to '削除', menu_reservation_path(@menu, reservation), method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
 <% end %>

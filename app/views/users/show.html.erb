@@ -55,7 +55,11 @@
             </tbody>
           <% else %>
             <tbody>
-              <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id)%></td>
+              <% if room.recipient.shop.present? %>
+                <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id) %></td>
+              <% else %>
+                <td><%= link_to room.recipient.name, shop_path(room.recipient.id) %></td>
+              <% end %>
               <td><%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: room.recipient_id), method: :post %></td>
             </tbody>
           <% end %>

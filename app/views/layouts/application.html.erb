@@ -15,13 +15,18 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/shops">Saver</a>
         <% if user_signed_in? %>
-          <%= link_to "Shopを探す", shops_path %>
-          <%= link_to "マイページ", user_path(current_user.id) %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <%= link_to "管理画面", rails_admin_path if current_user.is_admin? %>
+          <%= link_to "Shopを探す", shops_path, class: "btn btn-outline-success mr-1" %>
+          <ul class="navbar-nav ml-auto">
+            <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-outline-primary mr-1" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger mr-1" %>
+            <%= link_to "管理画面", rails_admin_path, class: "btn btn-outline-dark" if current_user.is_admin? %>
+          </ul>
         <% else %>
-          <%= link_to "新規登録", new_user_registration_path %>
-          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to "Shopを探す", shops_path, class: "btn btn-outline-success" %>
+          <ul class="navbar-nav ml-auto">
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary mr-1" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
+          </ul>
         <% end %>
         <div class="alert-primary"><%= notice %></div>
         <div class="alert-warning"><%= alert %></div>

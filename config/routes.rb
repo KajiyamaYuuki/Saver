@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :messages
   end
   resources :shops do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:index, :create]
   end
   resources :staffs
   resources :menus do

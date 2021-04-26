@@ -1,7 +1,8 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
   def index
-    @reservations = Reservation.all
+    @menu = Menu.find(params[:menu_id])
+    @reservations = @menu.reservations
   end
 
   def new
@@ -18,6 +19,14 @@ class ReservationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @menu = Menu.find(params[:menu_id])
+    @reservation = @menu.reservations.find(params[:id])
+    @reservation.destroy
+    @reservations = @menu.reservations
+    render :index
   end
 
   private
