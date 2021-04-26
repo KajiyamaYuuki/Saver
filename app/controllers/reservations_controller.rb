@@ -41,11 +41,11 @@ class ReservationsController < ApplicationController
     if current_user.present?
       unless current_user.id == @menu.shop.user_id
         flash[:notice] = '権限がありません'
-        redirect_to shops_path
+        redirect_to shop_path(@menu.shop_id)
       end
     else
       flash[:notice] = '権限がありません'
-      redirect_to shops_path
+      redirect_to shop_path(@menu.shop_id)
     end
   end
 end
