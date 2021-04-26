@@ -44,3 +44,32 @@ CSV.foreach('db/menu.csv', headers: true) do |info|
     shop_id: info['shop_id']
   )
 end
+
+CSV.foreach('db/staff.csv', headers: true) do |info|
+  Staff.create(
+    name: info['title'],
+    description: info['description'],
+    role: info['role'],
+    sex: info['sex'],
+    work_history: info['work_history'],
+    shop_id: info['shop_id']
+  )
+end
+
+CSV.foreach('db/review.csv', headers: true) do |info|
+  Review.create(
+    content: info['content'],
+    score: info['score'],
+    user_id: info['user_id'],
+    shop_id: info['shop_id']
+  )
+end
+
+CSV.foreach('db/reservation.csv', headers: true) do |info|
+  Reservation.create(
+    start_scheduled_at: info['start_scheduled_at'],
+    end_scheduled_at: info['end_scheduled_at'],
+    menu_id: info['menu_id'],
+    user_id: info['user_id']
+  )
+end

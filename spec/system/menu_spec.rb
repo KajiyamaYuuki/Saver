@@ -70,6 +70,18 @@ RSpec.describe Menu, type: :system do
           end
         end
       end
+      describe 'Menu削除' do
+        context 'shopのオーナーユーザーはmenuを削除できる' do
+          it 'Menuの削除が成功' do
+            visit shop_path(owner.shop.id)
+            page.accept_confirm do
+              click_link 'shop-show-destroy-menu'
+            end
+            expect(current_path).to eq shop_path(owner.shop.id)
+            expect(page).not_to have_content 'menu3'
+          end
+        end
+      end
     end
   end
 end

@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2021_04_16_075958) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "start_scheduled_at"
-    t.datetime "end_scheduled_at"
+    t.datetime "start_scheduled_at", null: false
+    t.datetime "end_scheduled_at", null: false
     t.bigint "user_id"
     t.bigint "menu_id"
     t.datetime "created_at", null: false
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2021_04_16_075958) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.integer "score"
+    t.text "content", null: false
+    t.integer "score", null: false
     t.bigint "user_id"
     t.bigint "shop_id"
     t.datetime "created_at", null: false

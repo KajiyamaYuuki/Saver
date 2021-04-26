@@ -75,6 +75,20 @@ RSpec.describe Staff, type: :system do
           end
         end
       end
+      describe 'staff削除' do
+        context 'shopのオーナーユーザーはstaffを削除できる' do
+          it 'staffの削除が成功' do
+            visit shop_path(owner.shop.id)
+            click_link 'staff-tab'
+            page.accept_confirm do
+              click_link 'shop-show-destroy-staff'
+            end
+            expect(current_path).to eq shop_path(owner.shop.id)
+            click_link 'staff-tab'
+            expect(page).not_to have_content 'staff3'
+          end
+        end
+      end
     end
   end
 end

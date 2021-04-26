@@ -12,5 +12,14 @@ class User < ApplicationRecord
   has_one :shop, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  before_update :must_not_update_last_admin_user
+  before_destroy :must_not_destroy_last_admin_user
 
+  def must_not_destroy_last_admin_user
+    throw(:abort) if User.where(is_admin: true).count == 1 && self.is_admin == true
+  end
+
+  def must_not_update_last_admin_user
+    throw(:abort) if User.where(is_admin: true).count == 1 && !self.is_admin && self.is_admin_was
+  end
 end

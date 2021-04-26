@@ -34,4 +34,24 @@ RSpec.describe Reservation, type: :system do
       end
     end
   end
+  describe 'Reservation削除' do
+    before do
+      menu = FactoryBot.create(:menu, shop: shop)
+      FactoryBot.create(:reservation, menu: menu, user: user)
+      login(owner)
+    end
+    describe '予約情報の新規登録' do
+      context 'フォームの入力値が正常' do
+        it '予約情報の新規登録が成功' do
+          visit shop_path(owner.shop.id)
+          click_link "reservation-tab"
+          find(".fc-time").click
+          page.accept_confirm do
+            click_link 'reservation-index-destroy'
+          end
+          expect(page).not_to have_content '14:30 - 15:30'
+        end
+      end
+    end
+  end
 end

@@ -16,6 +16,7 @@
         <a class="navbar-brand" href="/shops">Saver</a>
         <% if user_signed_in? %>
           <%= link_to "Shopを探す", shops_path, class: "btn btn-outline-success mr-1" %>
+          <%= link_to 'Shopのオーナー申請はこちら', conversations_path(sender_id: current_user.id, recipient_id: User.find_by(is_admin: true).id), method: :post unless current_user.is_owner? %>
           <ul class="navbar-nav ml-auto">
             <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-outline-primary mr-1" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger mr-1" %>
