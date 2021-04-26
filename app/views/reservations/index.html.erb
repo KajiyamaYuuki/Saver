@@ -1,1 +1,8 @@
 <div id="calendar"></div>
+
+<% @reservations.each do |reservation| %>
+  <%= reservation.menu.title %>
+  <%= reservation.user.name %>
+  <%= reservation.start_scheduled_at %>
+  <%= reservation.end_scheduled_at %>
+<% end %>

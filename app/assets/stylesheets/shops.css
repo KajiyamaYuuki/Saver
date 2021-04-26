@@ -3,3 +3,7 @@
   height: 225px;
   float: left;
 }
+
+p.card-text.address {
+  margin-bottom: 0;
+}
