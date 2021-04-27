@@ -25,6 +25,8 @@
     <%= form.label :end_scheduled_at %><br />
     <%= form.datetime_field :end_scheduled_at, id:"reservation-new-end_scheduled_at" %>
   </div>
+  <p style="color: red;">※予約は、shopのreservation情報から空いている日時を確認の上、作成するとbetterです</p>
 
   <%= form.button :submit, id:"reservation-new-submit" %>
+
 <% end %>
