@@ -28,7 +28,10 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     else
-      render 'index'
+      respond_to do |format|
+        format.html { render 'index' }
+        format.js { render :errors }
+      end
     end
   end
 
