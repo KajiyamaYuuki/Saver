@@ -2,6 +2,8 @@
   width: 200px;
   height: 225px;
   float: left;
+  border-radius: 50px;
+  object-fit: cover;
 }
 
 p.card-text.address {

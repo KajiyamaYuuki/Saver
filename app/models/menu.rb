@@ -5,4 +5,5 @@ class Menu < ApplicationRecord
   validates :price, presence: true
   validates :interval_hour, presence: true
   validates :reservationable, presence: true
+  mount_uploader :image, ImageUploader
 end
