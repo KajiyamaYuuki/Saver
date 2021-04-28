@@ -18,7 +18,8 @@ class Reservation < ApplicationRecord
   end
 
   def reservation_time_required
-    ((end_scheduled_at - start_scheduled_at)/60)/60 < menu.interval_hour if self.end_scheduled_at.present?
-      errors.add(:end_scheduled_at, "は開始時刻から、参考所要時間（#{menu.interval_hour.floor}時間）以上あけてください" )
+    if end_scheduled_at.present?
+      errors.add(:end_scheduled_at, "は開始時刻から、参考所要時間（#{menu.interval_hour.floor}時間）以上あけてください" ) if ((end_scheduled_at - start_scheduled_at)/60)/60 < menu.interval_hour
+    end
   end
 end
