@@ -7,13 +7,15 @@ class Shop < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true, length: { maximum: 30 }
-  validates :post_code, presence: true, length: { maximum: 7 }
+  validates :post_code, presence: true,
+                        format: { with: /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}$|^\d{5}$|^\d{7}\z/ }
   validates :prefecture_code, presence: true
   validates :address_city, presence: true
   validates :address_street, presence: true
   validates :email, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: true
+  validates :phone_number, format: { with: /\A0[1-9]\d{0,3}[-(]\d{1,4}[-)]\d{4}\Z/ }
   before_validation { email.downcase! }
 
   include JpPrefecture
