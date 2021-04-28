@@ -16,6 +16,7 @@ class Shop < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: true
   validates :phone_number, format: { with: /\A0[1-9]\d{0,3}[-(]\d{1,4}[-)]\d{4}\Z/ }
+  validates :url, format: { with: /\Ahttp(s|):\/\/[\w\-\_\.\!\*\'\)\(]+/ }
   before_validation { email.downcase! }
 
   include JpPrefecture
