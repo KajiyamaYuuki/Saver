@@ -4,11 +4,11 @@
 
 <div class="user_info row">
   <% if @user.image.present? %>
-    <p><%= image_tag @user.image.url, class: "icon_image col-md-6" %></p>
+    <%= image_tag @user.image.url, class: "icon_image col-md-4" %>
   <% else %>
-    <p><%= image_tag "default_user_icon.png", class: "icon_image col-md-6" %></p>
+    <%= image_tag "default_user_icon.png", class: "icon_image col-md-4" %>
   <% end %>
-  <div class="user_data col-md-6">
+  <div class="user_data col-md-8">
     <h3>名前 : <%= @user.name %></h3>
     <h3>メールアドレス : <%= @user.email %></h3>
     <% if current_user.id == @user.id %>
@@ -17,65 +17,67 @@
   </div>
 </div>
 
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="true">予約情報</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message" aria-selected="false">メッセージ</a>
-  </li>
-  <% if @user.is_owner? %>
+<div class="user_menu">
+  <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" id="shop-tab" data-toggle="tab" href="#shop" role="tab" aria-controls="shop" aria-selected="false">MyShop情報</a>
+      <a class="nav-link active" id="reservation-tab" data-toggle="tab" href="#reservation" role="tab" aria-controls="reservation" aria-selected="true">予約情報</a>
     </li>
-  <% end %>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane fade show active" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
-    <% @user_reservations.each do |reservation| %>
-      <h4><%= link_to reservation.menu.shop.name, shop_path(reservation.menu.shop.id) %></h4>
-      <p>予約中のメニュー：<%= reservation.menu.title %></p>
-      <p>来店予定日時：<%= l reservation.start_scheduled_at %>~</p>
+    <li class="nav-item">
+      <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message" aria-selected="false">メッセージ</a>
+    </li>
+    <% if @user.is_owner? %>
+      <li class="nav-item">
+        <a class="nav-link" id="shop-tab" data-toggle="tab" href="#shop" role="tab" aria-controls="shop" aria-selected="false">MyShop情報</a>
+      </li>
     <% end %>
-    <div id="calendar"></div>
-  </div>
+  </ul>
 
-  <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
-    <table class="table">
-      <thead>
-        <th scope="col">name</th>
-        <th scope="col">link</th>
-      </thead>
-        <% @rooms.each do |room| %>
-          <% if @user.is_owner? %>
-            <tbody>
-              <td><%= link_to room.sender.name, user_path(room.sender.id) %></td>
-              <td><%= link_to '個別メッセージ', conversations_path(sender_id: room.sender_id, recipient_id: current_user.id), method: :post %></td>
-            </tbody>
-          <% else %>
-            <tbody>
-              <% if room.recipient.shop.present? %>
-                <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id) %></td>
-              <% else %>
-                <td><%= link_to room.recipient.name, shop_path(room.recipient.id) %></td>
-              <% end %>
-              <td><%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: room.recipient_id), method: :post %></td>
-            </tbody>
-          <% end %>
-        <% end %>
-    </table>
-  </div>
-
-  <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
-    <% if @user.shop.present? %>
-      <%= link_to "ショップページへ", shop_path(@user.shop.id), class: "btn btn-outline-info" %>
-      <% @shop_reservations.each do |reservation| %>
-        <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
-        <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="reservation" role="tabpanel" aria-labelledby="reservation-tab">
+      <% @user_reservations.each do |reservation| %>
+        <h4><%= link_to reservation.menu.shop.name, shop_path(reservation.menu.shop.id) %></h4>
+        <p>予約中のメニュー：<%= reservation.menu.title %></p>
+        <p>来店予定日時：<%= l reservation.start_scheduled_at %>~</p>
       <% end %>
-    <% else %>
-      <%= link_to "店舗登録", new_shop_path, class: "btn btn-outline-info" %>
-    <% end %>
+      <div id="calendar"></div>
+    </div>
+
+    <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
+      <table class="table">
+        <thead>
+          <th scope="col">name</th>
+          <th scope="col">link</th>
+        </thead>
+          <% @rooms.each do |room| %>
+            <% if @user.is_owner? %>
+              <tbody>
+                <td><%= link_to room.sender.name, user_path(room.sender.id) %></td>
+                <td><%= link_to '個別メッセージ', conversations_path(sender_id: room.sender_id, recipient_id: current_user.id), method: :post %></td>
+              </tbody>
+            <% else %>
+              <tbody>
+                <% if room.recipient.shop.present? %>
+                  <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id) %></td>
+                <% else %>
+                  <td><%= link_to room.recipient.name, shop_path(room.recipient.id) %></td>
+                <% end %>
+                <td><%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: room.recipient_id), method: :post %></td>
+              </tbody>
+            <% end %>
+          <% end %>
+      </table>
+    </div>
+
+    <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+      <% if @user.shop.present? %>
+        <%= link_to "ショップページへ", shop_path(@user.shop.id), class: "btn btn-outline-info" %>
+        <% @shop_reservations.each do |reservation| %>
+          <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
+          <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
+        <% end %>
+      <% else %>
+        <%= link_to "店舗登録", new_shop_path, class: "btn btn-outline-info" %>
+      <% end %>
+    </div>
   </div>
 </div>
