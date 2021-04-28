@@ -49,21 +49,17 @@
           <th scope="col">link</th>
         </thead>
           <% @rooms.each do |room| %>
-            <% if @user.is_owner? %>
-              <tbody>
-                <td><%= link_to room.sender.name, user_path(room.sender.id) %></td>
-                <td><%= link_to '個別メッセージ', conversations_path(sender_id: room.sender_id, recipient_id: current_user.id), method: :post %></td>
-              </tbody>
-            <% else %>
-              <tbody>
-                <% if room.recipient.shop.present? %>
-                  <td><%= link_to room.recipient.shop.name, shop_path(room.recipient.shop.id) %></td>
+            <tbody>
+              <% if room.target_user(current_user).present? %>
+                <% if room.target_user(current_user).shop.present? %>
+                  <td><%= link_to room.target_user(current_user).shop.name, shop_path(room.target_user(current_user).shop.id) %></td>
+                  <td><%= link_to "個別メッセージ", conversation_messages_path(room)%></td>
                 <% else %>
-                  <td><%= link_to room.recipient.name, shop_path(room.recipient.id) %></td>
+                  <td><%= link_to room.target_user(current_user).name, user_path(room.target_user(current_user).id) %></td>
+                  <td><%= link_to "個別メッセージ", conversation_messages_path(room)%></td>
                 <% end %>
-                <td><%= link_to '個別メッセージ', conversations_path(sender_id: current_user.id, recipient_id: room.recipient_id), method: :post %></td>
-              </tbody>
-            <% end %>
+              <% end %>
+            </tbody>
           <% end %>
       </table>
     </div>
