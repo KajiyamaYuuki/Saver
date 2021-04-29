@@ -53,10 +53,10 @@
               <% if room.target_user(current_user).present? %>
                 <% if room.target_user(current_user).shop.present? %>
                   <td><%= link_to room.target_user(current_user).shop.name, shop_path(room.target_user(current_user).shop.id) %></td>
-                  <td><%= link_to "個別メッセージ", conversation_messages_path(room)%></td>
+                  <td><%= link_to " メッセージへ", conversation_messages_path(room), class: "fas fa-comments"%></td>
                 <% else %>
                   <td><%= link_to room.target_user(current_user).name, user_path(room.target_user(current_user).id) %></td>
-                  <td><%= link_to "個別メッセージ", conversation_messages_path(room)%></td>
+                  <td><%= link_to " メッセージへ", conversation_messages_path(room), class: "fas fa-comments"%></td>
                 <% end %>
               <% end %>
             </tbody>
