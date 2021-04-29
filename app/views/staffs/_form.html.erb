@@ -10,17 +10,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="staff_name_field">
     <%= form.label :name %><br />
-    <%= form.text_field :name, id: "shop-staff-name" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-id-card"></i></div>
+      </div>
+      <%= form.text_field :name, id: "shop-staff-name" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="staff_role_field">
     <%= form.label :role %><br />
-    <%= form.text_field :role, id: "shop-staff-role" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-user-tag"></i></div>
+      </div>
+      <%= form.text_field :role, id: "shop-staff-role" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="staff_sex_field">
     <%= form.label :sex %><br />
     <%= form.label :man %>
     <%= form.radio_button :sex, :man, id: "shop-staff-sex-man" %>
@@ -28,19 +38,34 @@
     <%= form.radio_button :sex, :woman, id: "shop-staff-sex-woman" %>
   </div>
 
-  <div class="field">
+  <div class="staff_work_history_field">
     <%= form.label :work_history %><br />
-    <%= form.text_field :work_history, id: "shop-staff-work_history" %>年
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-history"></i></div>
+      </div>
+      <%= form.text_field :work_history, id: "shop-staff-work_history" %>年
+    </div>
   </div>
 
-  <div class="field">
+  <div class="staff_description_field">
     <%= form.label :description %><br />
-    <%= form.text_area :description, id: "shop-staff-description" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-clipboard"></i></div>
+      </div>
+      <%= form.text_area :description, id: "shop-staff-description" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="staff_image_field">
     <%= form.label :image %><br />
-    <%= form.file_field :image, id: "shop-staff-image" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="far fa-image"></i></div>
+      </div>
+      <%= form.file_field :image, id: "shop-staff-image" %>
+    </div>
   </div>
 
   <%= form.button :submit, id: "shop-staff-submit" %>
