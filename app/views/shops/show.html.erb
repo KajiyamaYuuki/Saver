@@ -61,6 +61,8 @@
             <p class="card-header"><%= menu.title %></p>
             <% if menu.image.present? %>
               <%= image_tag menu.image.url, class:"card-img-top", width: "100%", height: "180" %>
+            <% else %>
+              <%= image_tag "no_image.png", class:"card-img-top", width: "100%", height: "180" %>
             <% end %>
             <div class="card-body">
               <p class="card-title">価格：<%= menu.price %>円</p>
