@@ -12,7 +12,7 @@
     </div>
     <%= f.hidden_field :shop_id, value: shop.id %>
     <%= f.hidden_field :score, id: "rating-value" %>
-    <%= f.text_area :content, id: "reviews-new-content" %>
-    <%= f.submit "保存", class: "button mt-3", id: "review-new-submit" %>
+    <%= f.text_area :content, id: "reviews-new-content" %><br />
+    <%= f.submit "保存", class: "btn btn-warning mt-1", id: "review-new-submit" %>
   <% end %>
 </div>
