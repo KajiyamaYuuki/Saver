@@ -1,9 +1,9 @@
-<h2><%= t('.sign_up') %></h2>
+<h2 class="text-center"><%= t('.sign_up') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="name_field text-center">
     <%= f.label :name %><br />
     <p class="control has-icons-left">
       <span class="icon is-small is-left">
@@ -13,7 +13,7 @@
     </p>
   </div>
 
-  <div class="field">
+  <div class="email_field text-center">
     <%= f.label :email %>
     <p class="control has-icons-left">
       <span class="icon is-small is-left">
@@ -23,7 +23,7 @@
     </p>
   </div>
 
-  <div class="field">
+  <div class="password_field text-center">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
@@ -36,7 +36,7 @@
     </p>
   </div>
 
-  <div class="field">
+  <div class="password_confirmation_field text-center">
     <%= f.label :password_confirmation %>
     <p class="control has-icons-left">
       <span class="icon is-small is-left">
@@ -46,9 +46,9 @@
     </p>
   </div>
 
-  <div class="actions">
-    <%= f.submit t('.sign_up'), id:"devise-registrations-new-sign_up" %>
+  <div class="actions text-center mb-2">
+    <%= f.submit t('.sign_up'), id:"devise-registrations-new-sign_up", class:"btn btn-primary" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="text-center"><%= render "devise/shared/links" %></div>
