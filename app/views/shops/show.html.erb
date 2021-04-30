@@ -56,7 +56,7 @@
   <div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
     <div class="card-deck">
       <% @shop.menus.each do |menu| %>
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
           <div class="card">
             <p class="card-header"><%= menu.title %></p>
             <% if menu.image.present? %>
@@ -81,7 +81,7 @@
   <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="staff-tab">
     <div class="card-deck">
       <% @shop.staffs.each do |staff| %>
-        <div class="col-md-3">
+        <div class="col-md-3 mt-3">
           <div class="card">
             <% if staff.image.present? %>
               <%= image_tag staff.image.url, class:"card-img-top", width: "100%", height: "200" %>

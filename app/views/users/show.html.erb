@@ -72,8 +72,13 @@
       <% if @user.shop.present? %>
         <%= link_to "ショップページへ", shop_path(@user.shop.id), class: "btn btn-outline-info" %>
         <% @shop_reservations.each do |reservation| %>
-          <p><%= reservation.menu.title %>：<%= reservation.user.name %>様</p>
-          <p><%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h4><%= link_to reservation.user.name, user_path(reservation.user.id) %>様</h4>
+            <p>予約されたメニュー：<%= reservation.menu.title %></p>
+            <p>来店予定日時：<%= l reservation.start_scheduled_at, format: :short %>~<%= l reservation.end_scheduled_at, format: :short %></p>
+          </li>
+        </ul>
         <% end %>
       <% else %>
         <%= link_to "店舗登録", new_shop_path, class: "btn btn-outline-info" %>
