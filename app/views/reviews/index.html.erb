@@ -1,6 +1,6 @@
   <header class="card-header">
     <p class="card-header-title fas fa-store">
-      <%= @shop.name %>
+      <%= link_to @shop.name, shop_path(@shop.id) %>
     </p>
   </header>
   <div class="card-content">
