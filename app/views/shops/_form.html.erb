@@ -10,60 +10,117 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name, class: "fas fa-store"%><br />
-    <%= form.text_field :name, class: "shop-name" %>
+  <div class="shop_name_field mb-3">
+      <%= form.label :name %><br />
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-store"></i></div>
+      </div>
+      <%= form.text_field :name, class: "shop-name", placeholder: "Shop name" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :post_code %><br />
-    <%= form.text_field :post_code, class: "shop-post_code" %>
+  <div class="shop_address_field">
+    <div class="post_code_field">
+      <%= form.label :post_code %><br />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">〒</div>
+        </div>
+          <%= form.text_field :post_code, class: "shop-post_code", placeholder: "Post code" %>
+      </div>
+    </div>
+
+    <div class="shop_prefecture_code_field">
+      <%= form.label :prefecture_code %><br />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-map-marked-alt"></i></div>
+        </div>
+        <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', class: "shop-prefecture_code" %>
+      </div>
+    </div>
+
+    <div class="shop_address_city_field">
+      <%= form.label :address_city %><br />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+        </div>
+        <%= form.text_field :address_city, class: "shop-address_city" %>
+      </div>
+    </div>
+
+    <div class="shop_address_street_field">
+      <%= form.label :address_street %><br />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-map-pin"></i></div>
+        </div>
+        <%= form.text_field :address_street, class: "shop-address_street" %>
+      </div>
+    </div>
+
+    <div class="shop_address_building_field">
+      <%= form.label :address_building %><br />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-building"></i></div>
+        </div>
+        <%= form.text_field :address_building, class: "shop-address_building" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :prefecture_code %><br />
-    <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', class: "shop-prefecture_code" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address_city %><br />
-    <%= form.text_field :address_city, class: "shop-address_city" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address_street %><br />
-    <%= form.text_field :address_street, class: "shop-address_street" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address_building %><br />
-    <%= form.text_field :address_building, class: "shop-address_building" %>
-  </div>
-
-  <div class="field">
+  <div class="shop_phone_number_field">
     <%= form.label :phone_number %><br />
-    <%= form.text_field :phone_number, class: "shop-phone_number", placeholder: "※ハイフン付きで入力" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-phone-alt"></i></div>
+      </div>
+      <%= form.text_field :phone_number, class: "shop-phone_number", placeholder: "※ハイフン付きで入力" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="shop_email_field">
     <%= form.label :email %><br />
-    <%= form.email_field :email, class: "shop-email" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+      </div>
+      <%= form.email_field :email, class: "shop-email" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="shop_url_field">
     <%= form.label :url %><br />
-    <%= form.text_field :url, class: "shop-url" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-link"></i></div>
+      </div>
+      <%= form.text_field :url, class: "shop-url" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="shop_description_field">
     <%= form.label :description %><br />
-    <%= form.text_area :description, class: "shop-description" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-clipboard"></i></div>
+      </div>
+      <%= form.text_area :description, class: "shop-description" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="shop_image_field">
     <%= form.label :image %><br />
-    <%= form.file_field :image, class: "shop-image" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="far fa-image"></i></div>
+      </div>
+      <%= form.file_field :image, class: "shop-image" %>
+    </div>
   </div>
 
-  <%= form.button :submit, id: "shop-submit" %>
+  <%= form.button :submit, id: "shop-submit", class: "btn btn-success mt-2" %>
 <% end %>

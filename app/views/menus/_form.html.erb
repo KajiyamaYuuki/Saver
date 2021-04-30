@@ -10,35 +10,60 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="menu_title_field">
     <%= form.label :title %><br />
-    <%= form.text_field :title, id: "shop-menu-title" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-book"></i></div>
+      </div>
+      <%= form.text_field :title, id: "shop-menu-title", placeholder: "menu title" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="menu_price_field">
     <%= form.label :price %><br />
-    <%= form.text_field :price, id: "shop-menu-price" %>円
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-coins"></i></div>
+      </div>
+      <%= form.text_field :price, id: "shop-menu-price" %>円
+    </div>
   </div>
 
-  <div class="field">
+  <div class="menu_interval_hour_field">
     <%= form.label :interval_hour %><br />
-    <%= form.text_field :interval_hour, id: "shop-menu-interval_hour" %>時間
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-clock"></i></div>
+      </div>
+      <%= form.text_field :interval_hour, id: "shop-menu-interval_hour" %>時間
+    </div>
   </div>
 
-  <div class="field">
+  <div class="menu_reservationable_field">
     <%= form.label :reservationable %><br />
     <%= form.check_box :reservationable, id: "shop-menu-reservationable" %>
   </div>
 
-  <div class="field">
+  <div class="menu_description_field">
     <%= form.label :description %><br />
-    <%= form.text_area :description, id: "shop-menu-description" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-clipboard"></i></div>
+      </div>
+      <%= form.text_area :description, id: "shop-menu-description" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="menu_image_field">
     <%= form.label :image %><br />
-    <%= form.file_field :image, id: "shop-menu-image" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="far fa-image"></i></div>
+      </div>
+      <%= form.file_field :image, id: "shop-menu-image" %>
+    </div>
   </div>
 
-  <%= form.button :submit, id: "shop-menu-submit" %>
+  <%= form.button :submit, id: "shop-menu-submit", class: "btn btn-success mt-2" %>
 <% end %>

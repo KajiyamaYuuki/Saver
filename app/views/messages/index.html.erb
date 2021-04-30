@@ -2,7 +2,7 @@
   <%= link_to '以前のメッセージ', '?m=all' %>
 <% end %>
 <div class="ui segment">
-  <h2><%= @conversation.recipient.name %>さんと<%= @conversation.sender.name %>さんの個別メッセージ画面</h2>
+  <h2><%= @conversation.recipient.name %>さんと<%= @conversation.sender.name %>さんの個別メッセージ</h2>
   <% @messages.each do |message| %>
     <% if message.body.present? %>
       <div class="item">
@@ -31,7 +31,7 @@
     </div>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
     <div>
-      <%= f.submit "メッセージを送る", id: "message-index-submit" %>
+      <%= f.submit "メッセージを送る", id: "message-index-submit", class: "btn btn-info mt-2" %>
     </div>
   <% end %>
 </div>
